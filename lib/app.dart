@@ -8,10 +8,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Ecommerce App',
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: DAppTheme.lightTheme,
-      darkTheme: DAppTheme.darkTheme,
+      darkTheme: DAppTheme.darkTheme
     );
   }
 }
