@@ -34,7 +34,7 @@ class DAppTheme {
     scaffoldBackgroundColor: Colors.black,
     textTheme: DTextTheme.darkTextTheme,
     elevatedButtonTheme: DElevatedButtonTheme.darkElevatedButtonTheme,
-    outlinedButtonTheme: DOutlinedButtonTheme.lightOutlinedButtonTheme,
+    outlinedButtonTheme: DOutlinedButtonTheme.darkOutlinedButtonTheme,
     appBarTheme: DAppBarTheme.darkAppBarTheme,
     bottomSheetTheme: DBottomSheetTheme.darkBottomSheetTheme,
     checkboxTheme: DCheckboxTheme.darkCheckboxTheme,
