@@ -4,6 +4,8 @@ class DTexts {
   // -- GLOBAL Texts
   static const String and = "&";
   static const String continueText = "Continue";
+  static const String submit = "Submit";
+  static const String done = "Done";
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";

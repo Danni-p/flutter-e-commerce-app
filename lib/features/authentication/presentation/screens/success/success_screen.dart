@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/common/styles/spacing_styles.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
-import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
 import 'package:flutter_e_commerce_app/utils/helpers/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
@@ -10,10 +9,15 @@ class SuccessScreen extends StatelessWidget {
       required this.image,
       required this.title,
       required this.subTitle,
-      required this.onPressed});
+      required this.primaryBtnText,
+      this.secondaryBtnText,
+      required this.onPrimaryPressed,
+      this.onSecondaryPressed});
 
-  final String image, title, subTitle;
-  final VoidCallback onPressed;
+  final String image, title, subTitle, primaryBtnText;
+  final String? secondaryBtnText;
+  final VoidCallback onPrimaryPressed;
+  final VoidCallback? onSecondaryPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +48,16 @@ class SuccessScreen extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: onPressed,
-                    child: const Text(DTexts.continueText))),
+                    onPressed: onPrimaryPressed, child: Text(primaryBtnText))),
+
+            if (onSecondaryPressed != null && secondaryBtnText != null) ...[
+              const SizedBox(height: DSizes.spaceBtwItems),
+              SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                      onPressed: onSecondaryPressed,
+                      child: Text(secondaryBtnText!))),
+            ]
           ]),
         ),
       ),
