@@ -13,4 +13,8 @@ class DImages {
   static const String onBoardingImage1 = "assets/images/on-boarding/searching.gif";
   static const String onBoardingImage2 = "assets/images/on-boarding/cart.gif";
   static const String onBoardingImage3 = "assets/images/on-boarding/delivering.gif";
+
+  // -- Signup
+  static const String staticSuccessIllustration = "assets/images/signup/sammy-line-woman-gives-five-to-a-robot-with-artificial-intelligence.png";
+  static const String deliveredEmailIllustration = "assets/images/signup/sammy-line-man-receives-a-mail.png";
 }

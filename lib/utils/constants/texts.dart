@@ -2,7 +2,8 @@ class DTexts {
   DTexts._();
 
   // -- GLOBAL Texts
-   static const String and = "&";
+  static const String and = "&";
+  static const String continueText = "Continue";
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";
@@ -52,4 +53,6 @@ class DTexts {
   static const String confirmEmailTitle = "Verify your email address!";
   static const String confirmEmailSubTitle = "Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personalized Offers.";
   static const String emailNotReceivedMessage = "Didn't get the email? Check your junk/spam or resend it.";
+  static const String yourAccountCreatedTitle = "Your account sucessfully created!";
+  static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is created. Unleash the Joy of Seamless Online Shopping!";
 }

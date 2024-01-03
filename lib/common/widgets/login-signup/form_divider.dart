@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
+import 'package:flutter_e_commerce_app/utils/helpers/helper_functions.dart';
 
 class DFormDivider extends StatelessWidget {
   const DFormDivider({
     super.key,
-    required this.isDark,
     required this.deviderText,
   });
 
-  final bool isDark;
   final String deviderText;
 
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
+    final isDark = DHelperFunctions.isDarkMode(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
