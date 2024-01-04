@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce_app/features/authentication/presentation/screens/on-boarding/on_boarding_screen.dart';
+import 'package:flutter_e_commerce_app/features/authentication/screens/on-boarding/on_boarding_screen.dart';
 import 'package:flutter_e_commerce_app/utils/theme/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 

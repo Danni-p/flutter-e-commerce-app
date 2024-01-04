@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce_app/features/authentication/presentation/screens/signup/verify_email_screen.dart';
-import 'package:flutter_e_commerce_app/features/authentication/presentation/screens/signup/widgets/terms_and_conditions_checkbox.dart';
+import 'package:flutter_e_commerce_app/features/authentication/screens/signup/verify_email_screen.dart';
+import 'package:flutter_e_commerce_app/features/authentication/screens/signup/widgets/terms_and_conditions_checkbox.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
 import 'package:get/get.dart';
