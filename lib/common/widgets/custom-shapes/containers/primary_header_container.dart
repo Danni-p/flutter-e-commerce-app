@@ -36,6 +36,7 @@ class DPrimaryHeaderContainer extends StatelessWidget {
                   backgroundColor: DColors.textWhite.withOpacity(0.1),
                 ),
               ),
+              child
             ],
           ),
         ),
