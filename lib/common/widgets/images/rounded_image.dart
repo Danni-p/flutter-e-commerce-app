@@ -9,6 +9,7 @@ class DRoundedImage extends StatelessWidget {
       required this.imageUrl,
       this.applyImageRadius = true,
       this.border,
+      this.overlayColor,
       this.backgroundColor = Colors.transparent,
       this.fit,
       this.padding,
@@ -20,7 +21,8 @@ class DRoundedImage extends StatelessWidget {
   final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
-  final Color backgroundColor;
+  final Color? overlayColor;
+  final Color? backgroundColor;
   final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
   final bool isNetworkImage;
@@ -47,6 +49,7 @@ class DRoundedImage extends StatelessWidget {
                 image: isNetworkImage
                     ? NetworkImage(imageUrl)
                     : AssetImage(imageUrl) as ImageProvider,
+                color: overlayColor,
                 fit: fit)),
       ),
     );

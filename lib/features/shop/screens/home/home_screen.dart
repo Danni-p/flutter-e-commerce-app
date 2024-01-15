@@ -29,7 +29,10 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: DSizes.spaceBtwSections),
 
                 /// Searchbar
-                DSearchContainer(text: DTexts.storeSearch),
+                DSearchContainer(
+                    text: DTexts.storeSearch,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: DSizes.defaultSpace)),
                 SizedBox(height: DSizes.spaceBtwSections),
 
                 /// Categories
@@ -60,6 +63,11 @@ class HomeScreen extends StatelessWidget {
                     DImages.banner3
                   ]),
                   const SizedBox(height: DSizes.spaceBtwSections),
+
+                  /// -- Heading
+                  DSectionHeading(
+                      title: DTexts.popularProducts, onPressed: () {}),
+                  const SizedBox(height: DSizes.spaceBtwItems),
 
                   /// -- Popular Products
                   DGridLayout(

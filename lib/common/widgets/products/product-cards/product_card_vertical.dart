@@ -5,6 +5,7 @@ import 'package:flutter_e_commerce_app/common/widgets/icons/rounded_icon_button.
 import 'package:flutter_e_commerce_app/common/widgets/images/rounded_image.dart';
 import 'package:flutter_e_commerce_app/common/widgets/products/product-cards/product_price_text.dart';
 import 'package:flutter_e_commerce_app/common/widgets/products/product-cards/product_title_text.dart';
+import 'package:flutter_e_commerce_app/common/widgets/texts/brand_title_with_verify_icon.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
@@ -66,47 +67,39 @@ class DProductCardVertical extends StatelessWidget {
           ),
 
           /// -- Details
-          Padding(
-            padding: const EdgeInsets.only(left: DSizes.sm),
+          const Padding(
+            padding: EdgeInsets.only(left: DSizes.sm),
             child: Column(
               children: [
-                const DProductTitleText(
+                DProductTitleText(
                     title: 'Green Nike Air Shoes', dense: true),
-                const SizedBox(
+                SizedBox(
                   height: DSizes.spaceBtwItems / 2,
                 ),
-                Row(children: [
-                  Text('Nike',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: themeData.textTheme.labelMedium),
-                  const SizedBox(width: DSizes.xs),
-                  const Icon(Iconsax.verify5,
-                      color: DColors.primary, size: DSizes.iconXs)
-                ]),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      /// Price
-                      const DProductPriceText(price: '35.5'),
-                      Container(
-                        decoration: const BoxDecoration(
-                            color: DColors.dark,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(DSizes.cardRadiusMd),
-                                bottomRight: Radius.circular(
-                                    DSizes.productImageRadius))),
-                        child: const Center(
-                            child: SizedBox(
-                                width: DSizes.iconLg,
-                                height: DSizes.iconLg,
-                                child:
-                                    Icon(Iconsax.add, color: DColors.white))),
-                      )
-                    ]),
+                DBrandTitleWithVerifyIcon(title: 'Nike'),
               ],
             ),
-          )
+          ),
+          const Spacer(),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            /// Price
+            const Padding(
+              padding: EdgeInsets.only(left: DSizes.sm),
+              child: DProductPriceText(price: '35.5'),
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                  color: DColors.dark,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(DSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(DSizes.productImageRadius))),
+              child: const Center(
+                  child: SizedBox(
+                      width: DSizes.iconLg,
+                      height: DSizes.iconLg,
+                      child: Icon(Iconsax.add, color: DColors.white))),
+            )
+          ]),
         ]),
       ),
     );

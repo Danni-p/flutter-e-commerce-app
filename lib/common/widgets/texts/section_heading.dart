@@ -18,17 +18,17 @@ class DSectionHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
-    return 
-        Row(
-          children: [
-            Text(title,
-                style: themeData.textTheme.headlineSmall!.apply(color: textColor),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis),
-            if (showActionButton) ... [
-              TextButton(onPressed: onPressed, child: Text(buttonTitle))
-            ]
-          ],
-        );
+    return Row(
+      children: [
+        Text(title,
+            style: themeData.textTheme.headlineSmall!.apply(color: textColor),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis),
+        if (showActionButton) ...[
+          const Spacer(),
+          TextButton(onPressed: onPressed, child: Text(buttonTitle))
+        ]
+      ],
+    );
   }
 }

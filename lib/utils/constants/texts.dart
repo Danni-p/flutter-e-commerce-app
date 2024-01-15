@@ -29,6 +29,11 @@ class DTexts {
   // -- Home
   static const String homeAppbarTitle = "Good day for shopping";
   static const String homeAppbarSubTitle = "Taimoor Sikander";
+  static const String popularProducts = "Popular Products";
+
+   // -- Store
+   static const String searchInStore = "Search in Store";
+   static const String featuredBrands = "Featured Brands";
 
   // -- Header
   static const String storeSearch = "Search in Store";
