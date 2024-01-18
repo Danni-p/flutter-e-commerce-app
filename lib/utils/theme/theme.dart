@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:flutter_e_commerce_app/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:flutter_e_commerce_app/utils/theme/custom_themes/checkbox_theme.dart';
@@ -16,7 +17,7 @@ class DAppTheme {
     fontFamily: 'Poppins',
     brightness: Brightness.light,
     primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: DColors.white,
     textTheme: DTextTheme.lightTextTheme,
     elevatedButtonTheme: DElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: DOutlinedButtonTheme.lightOutlinedButtonTheme,
@@ -31,7 +32,7 @@ class DAppTheme {
     fontFamily: 'Poppins',
     brightness: Brightness.dark,
     primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: DColors.black,
     textTheme: DTextTheme.darkTextTheme,
     elevatedButtonTheme: DElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: DOutlinedButtonTheme.darkOutlinedButtonTheme,

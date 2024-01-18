@@ -22,7 +22,6 @@ class DProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
             boxShadow: [DShadowStyle.verticalProductShadow],
@@ -31,7 +30,7 @@ class DProductCardVertical extends StatelessWidget {
         child: Column(children: [
           /// Thumbnail, Wishlist Button, Discount Tag
           DRoundedContainer(
-            height: 180,
+            height: 140,
             padding: const EdgeInsets.symmetric(
                 horizontal: DSizes.sm, vertical: DSizes.xs),
             backgroundColor: isDark ? DColors.dark : DColors.light,
@@ -68,8 +67,9 @@ class DProductCardVertical extends StatelessWidget {
 
           /// -- Details
           const Padding(
-            padding: EdgeInsets.only(left: DSizes.sm),
+            padding: EdgeInsets.only(top: DSizes.xs, left: DSizes.sm, right: DSizes.sm),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DProductTitleText(
                     title: 'Green Nike Air Shoes', dense: true),
@@ -85,7 +85,7 @@ class DProductCardVertical extends StatelessWidget {
             /// Price
             const Padding(
               padding: EdgeInsets.only(left: DSizes.sm),
-              child: DProductPriceText(price: '35.5'),
+              child: DProductPriceText(price: '35.5', dense: true),
             ),
             Container(
               decoration: const BoxDecoration(

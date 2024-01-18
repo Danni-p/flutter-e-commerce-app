@@ -16,7 +16,7 @@ class DHomeCategories extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemBuilder: (_, index) {
             return DVerticalImageText(
-              title: 'Sportgeräte 123',
+              title: 'Sportgeräte',
               image: DImages.sportIcon,
               onTap: () {},
             );

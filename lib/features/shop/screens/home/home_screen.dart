@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                   /// -- Popular Products
                   DGridLayout(
                     itemCount: 4,
-                    mainAxisExtent: 288,
+                    mainAxisExtent: 240,
                     itemBuilder: (context, index) =>
                         const DProductCardVertical(),
                   ),

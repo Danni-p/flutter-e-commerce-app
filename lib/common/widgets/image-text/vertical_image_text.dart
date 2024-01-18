@@ -25,9 +25,7 @@ class DVerticalImageText extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(DSizes.spaceBtwItems),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           /// Circular Icon
           Container(
             width: 56,
@@ -38,10 +36,7 @@ class DVerticalImageText extends StatelessWidget {
                     backgroundColor ?? (isDark ? DColors.black : DColors.white),
                 borderRadius: BorderRadius.circular(100)),
             child: Center(
-                child: Image(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
-                    color: isDark ? DColors.light : DColors.dark)),
+                child: Image(image: AssetImage(image), fit: BoxFit.cover)),
           ),
           const SizedBox(height: DSizes.spaceBtwItems / 2),
           SizedBox(

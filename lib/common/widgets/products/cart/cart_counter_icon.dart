@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
+import 'package:flutter_e_commerce_app/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 class DCartCounterIcon extends StatelessWidget {
@@ -15,6 +16,7 @@ class DCartCounterIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
+    final isDark = DHelperFunctions.isDarkMode(context);
     return Stack(
       children: [
         IconButton(
@@ -27,7 +29,7 @@ class DCartCounterIcon extends StatelessWidget {
             width: 18,
             height: 18,
             decoration: BoxDecoration(
-                color: DColors.black, borderRadius: BorderRadius.circular(100)),
+                color: isDark ? DColors.darkerGrey : DColors.dark, borderRadius: BorderRadius.circular(100)),
             child: Center(
               child: Text('2',
                   style: themeData.textTheme.labelLarge!
