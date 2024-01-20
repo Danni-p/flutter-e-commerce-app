@@ -9,7 +9,7 @@ class DVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = DColors.white,
-    this.backgroundColor = DColors.white,
+    this.backgroundColor,
     this.onTap,
   });
 
@@ -36,7 +36,7 @@ class DVerticalImageText extends StatelessWidget {
                     backgroundColor ?? (isDark ? DColors.black : DColors.white),
                 borderRadius: BorderRadius.circular(100)),
             child: Center(
-                child: Image(image: AssetImage(image), fit: BoxFit.cover)),
+                child: Image(image: AssetImage(image), fit: BoxFit.cover, color: isDark ? DColors.white : DColors.dark)),
           ),
           const SizedBox(height: DSizes.spaceBtwItems / 2),
           SizedBox(
