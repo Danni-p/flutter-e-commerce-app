@@ -34,6 +34,9 @@ class DImages {
   static const String banner2 = "assets/images/banners/banner_2.jpg";
   static const String banner3 = "assets/images/banners/banner_3.jpg";
 
+  // -- Profile
+  static const String user = "assets/images/user/user.png";
+
   // -- Products
   static const String productImage1 = "assets/images/products/nike-shoes.png";
   static const String productImage2 = "assets/images/products/product-1.png";

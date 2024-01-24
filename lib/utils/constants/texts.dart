@@ -10,6 +10,7 @@ class DTexts {
   static const String profile = "Profile";
   static const String wishlist = "Wishlist";
   static const String store = "Store";
+  static const String logout = "Logout";
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";
@@ -40,6 +41,11 @@ class DTexts {
    static const String clothes = "Clothes";
    static const String cosmetics = "Cosmetics";
    static const String youMightLike = "You might like";
+
+  // -- Settings
+  static const String account = "Account";
+  static const String accountSettings = "Account Settings";
+  static const String appSettings = "App Settings";
 
   // -- Header
   static const String storeSearch = "Search in Store";
