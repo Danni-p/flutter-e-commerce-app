@@ -6,8 +6,10 @@ import 'package:iconsax/iconsax.dart';
 
 class DUserProfileTile extends StatelessWidget {
   const DUserProfileTile({
-    super.key,
+    super.key, required this.onPressed,
   });
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class DUserProfileTile extends StatelessWidget {
        leading: const DRoundedImage(imageUrl: DImages.user),
        title: Text('Coding with T', style: themeData.textTheme.headlineSmall!.apply(color: DColors.white)),
        subtitle: Text('support@codingwithT.com', style: themeData.textTheme.bodyMedium!.apply(color: DColors.white)),
-       trailing: IconButton(onPressed: (){}, icon: const Icon(Iconsax.edit, color: DColors.white,),),
+       trailing: IconButton(onPressed: onPressed, icon: const Icon(Iconsax.edit, color: DColors.white,),),
      );
   }
 }

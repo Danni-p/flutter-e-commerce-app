@@ -11,6 +11,10 @@ class DTexts {
   static const String wishlist = "Wishlist";
   static const String store = "Store";
   static const String logout = "Logout";
+  static const String name = "Name";
+  static const String userId= "User ID";
+  static const String gender = "Gender";
+  static const String dateOfBirth = "Date of Birth";
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";
@@ -46,6 +50,12 @@ class DTexts {
   static const String account = "Account";
   static const String accountSettings = "Account Settings";
   static const String appSettings = "App Settings";
+
+  // -- Profile
+  static const String changeProfilePicture = "Change Profile Picture";
+  static const String profileInformation = "Profile Information";
+  static const String personalInformation = "Personal Information";
+  static const String closeAccount = "Close Account";
 
   // -- Header
   static const String storeSearch = "Search in Store";
