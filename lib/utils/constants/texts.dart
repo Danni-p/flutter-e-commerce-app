@@ -15,6 +15,7 @@ class DTexts {
   static const String userId= "User ID";
   static const String gender = "Gender";
   static const String dateOfBirth = "Date of Birth";
+  static const String checkout = "Checkout";
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";
@@ -61,6 +62,19 @@ class DTexts {
   static const String storeSearch = "Search in Store";
   static const String popularCategories = "Popular Categories";
   static const String viewAll = "View all";
+
+  // -- Product Details
+  static const String variation = "Variation";
+  static const String status = "Status";
+  static const String inStock = "In Stock";
+  static const String price = "Price";
+  static const String stock = "Stock";
+  static const String colors = "Colors";
+  static const String size = "Size";
+  static const String description = "Description";
+  static const String showMore = "Show more";
+  static const String showLess = "Show less";
+  static const String addToCart = "Add to cart";
 
   // -- Authentication Form Text
   static const String firstName = "First Name";
