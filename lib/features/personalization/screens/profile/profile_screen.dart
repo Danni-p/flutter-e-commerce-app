@@ -3,6 +3,7 @@ import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:flutter_e_commerce_app/common/widgets/images/rounded_image.dart';
 import 'package:flutter_e_commerce_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/profile/widgets/profile_menu.dart';
+import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
@@ -97,7 +98,7 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: DSizes.spaceBtwItems),
 
               Center(
-                child: TextButton(onPressed: () {}, child: const Text(DTexts.closeAccount, style: TextStyle(color: Colors.red),)),
+                child: TextButton(onPressed: () {}, child: const Text(DTexts.closeAccount, style: TextStyle(color: DColors.error),)),
               )
             ],
           ),
