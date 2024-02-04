@@ -26,7 +26,6 @@ class StoreScreen extends StatelessWidget {
           title: Text(DTexts.store, style: themeData.textTheme.headlineMedium),
           actions: [
             DCartCounterIcon(
-              onPressed: () {},
               iconColor: isDark ? DColors.white : DColors.black,
             )
           ],

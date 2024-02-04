@@ -91,6 +91,9 @@ class DTexts {
   static const String state = "State";
   static const String country = "Country";
 
+  // -- Cart
+  static const String cart = "Cart";
+
   // -- Authentication Form Text
   static const String firstName = "First Name";
   static const String lasstName = "Last Name";

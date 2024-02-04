@@ -22,9 +22,8 @@ class DHomeAppBar extends StatelessWidget {
                   .apply(color: DColors.white))
         ],
       ),
-      actions: [
+      actions: const [
         DCartCounterIcon(
-          onPressed: () {},
           iconColor: DColors.white,
         )
       ],
