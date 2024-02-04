@@ -12,10 +12,11 @@ class DTexts {
   static const String store = "Store";
   static const String logout = "Logout";
   static const String name = "Name";
-  static const String userId= "User ID";
+  static const String userId = "User ID";
   static const String gender = "Gender";
   static const String dateOfBirth = "Date of Birth";
   static const String checkout = "Checkout";
+  static const String save = "Save";
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";
@@ -37,15 +38,15 @@ class DTexts {
   static const String homeAppbarSubTitle = "Taimoor Sikander";
   static const String popularProducts = "Popular Products";
 
-   // -- Store
-   static const String searchInStore = "Search in Store";
-   static const String featuredBrands = "Featured Brands";
-   static const String sports = "Sports";
-   static const String furniture = "Furniture";
-   static const String electronics = "Electronics";
-   static const String clothes = "Clothes";
-   static const String cosmetics = "Cosmetics";
-   static const String youMightLike = "You might like";
+  // -- Store
+  static const String searchInStore = "Search in Store";
+  static const String featuredBrands = "Featured Brands";
+  static const String sports = "Sports";
+  static const String furniture = "Furniture";
+  static const String electronics = "Electronics";
+  static const String clothes = "Clothes";
+  static const String cosmetics = "Cosmetics";
+  static const String youMightLike = "You might like";
 
   // -- Settings
   static const String account = "Account";
@@ -78,7 +79,17 @@ class DTexts {
 
   // -- Product Reviews
   static const String reviewsAndRatings = "Reviews & Ratings";
-  static const String ratingDescription = "Ratings and reviews are verified and are from people who use the same type of device that you use.";
+  static const String ratingDescription =
+      "Ratings and reviews are verified and are from people who use the same type of device that you use.";
+
+  // -- Addresses
+  static const String addresses = "Addresses";
+  static const String addNewAddress = "Add new Address";
+  static const String street = "Street";
+  static const String postalCode = "Postal Code";
+  static const String city = "City";
+  static const String state = "State";
+  static const String country = "Country";
 
   // -- Authentication Form Text
   static const String firstName = "First Name";

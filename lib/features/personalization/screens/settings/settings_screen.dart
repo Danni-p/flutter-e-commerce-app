@@ -3,6 +3,7 @@ import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:flutter_e_commerce_app/common/widgets/custom-shapes/containers/primary_header_container.dart';
 import 'package:flutter_e_commerce_app/common/widgets/list-tiles/user_profile_tile.dart';
 import 'package:flutter_e_commerce_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_e_commerce_app/features/personalization/screens/address/user_address_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/profile/profile_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/settings/widgets/settings_menu_tile.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
@@ -45,9 +46,9 @@ class SettingsScreen extends StatelessWidget {
 
                 DSettingsMenuTile(
                   icon: Iconsax.safe_home,
-                  title: 'My Address',
+                  title: 'My Addresses',
                   subtitle: 'Set shopping delivery address',
-                  onTap: () {},
+                  onTap: () => Get.to(() => const UserAddressScreen()),
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.shopping_cart,
