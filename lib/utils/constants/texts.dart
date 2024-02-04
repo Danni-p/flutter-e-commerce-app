@@ -72,9 +72,13 @@ class DTexts {
   static const String colors = "Colors";
   static const String size = "Size";
   static const String description = "Description";
-  static const String showMore = "Show more";
-  static const String showLess = "Show less";
+  static const String showMore = " Show more";
+  static const String showLess = " Show less";
   static const String addToCart = "Add to cart";
+
+  // -- Product Reviews
+  static const String reviewsAndRatings = "Reviews & Ratings";
+  static const String ratingDescription = "Ratings and reviews are verified and are from people who use the same type of device that you use.";
 
   // -- Authentication Form Text
   static const String firstName = "First Name";
