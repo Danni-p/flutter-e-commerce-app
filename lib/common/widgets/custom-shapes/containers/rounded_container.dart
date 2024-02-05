@@ -12,7 +12,7 @@ class DRoundedContainer extends StatelessWidget {
     this.showBorder = false,
     this.margin,
     this.child,
-    required this.backgroundColor,
+    this.backgroundColor,
     this.borderColor = DColors.borderPrimary
   });
 
@@ -22,7 +22,7 @@ class DRoundedContainer extends StatelessWidget {
   final EdgeInsets? padding;
   final EdgeInsets? margin;
   final Widget? child;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final Color borderColor;
   final bool showBorder;
 

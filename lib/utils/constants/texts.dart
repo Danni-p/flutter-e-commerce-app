@@ -94,6 +94,20 @@ class DTexts {
   // -- Cart
   static const String cart = "Cart";
 
+  // -- Checkout
+  static const String couponText = "Have a promo code? Enter here!";
+  static const String apply = "Apply";
+  static const String subtotal = "Subtotal";
+  static const String shippingFee = "Shipping Fee";
+  static const String taxFee = "Tax Fee";
+  static const String orderTotal = "Order Total";
+  static const String paymentMethod = "Payment Method";
+  static const String change = "Change";
+  static const String paypal = "Paypal";
+  static const String shippingAddress = "Shipping Address";
+  static const String paymentSuccess = "Payment Success!";
+  static const String paymentSuccessSubTitle = "Your items will be shipped soon!";
+
   // -- Authentication Form Text
   static const String firstName = "First Name";
   static const String lasstName = "Last Name";
