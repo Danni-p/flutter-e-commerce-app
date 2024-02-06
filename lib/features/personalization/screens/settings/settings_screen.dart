@@ -6,6 +6,8 @@ import 'package:flutter_e_commerce_app/common/widgets/texts/section_heading.dart
 import 'package:flutter_e_commerce_app/features/personalization/screens/address/user_address_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/profile/profile_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/settings/widgets/settings_menu_tile.dart';
+import 'package:flutter_e_commerce_app/features/shop/screens/cart/cart_screen.dart';
+import 'package:flutter_e_commerce_app/features/shop/screens/order/order_screen.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
@@ -46,43 +48,43 @@ class SettingsScreen extends StatelessWidget {
 
                 DSettingsMenuTile(
                   icon: Iconsax.safe_home,
-                  title: 'My Addresses',
+                  title: DTexts.myAddresses,
                   subtitle: 'Set shopping delivery address',
                   onTap: () => Get.to(() => const UserAddressScreen()),
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.shopping_cart,
-                  title: 'My Cart',
+                  title: DTexts.myCart,
                   subtitle: 'Add, remove products and move to checkout',
-                  onTap: () {},
+                  onTap: () => Get.to(() => const CartScreen()),
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.bag_tick,
-                  title: 'My Orders',
+                  title: DTexts.myOrders,
                   subtitle: 'In-progress and Completed Orders',
-                  onTap: () {},
+                  onTap: () => Get.to(() => const OrderScreen()),
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.bank,
-                  title: 'Bank Account',
+                  title: DTexts.bankAccount,
                   subtitle: 'Withdraw balance to registered bank accout',
                   onTap: () {},
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.discount_shape,
-                  title: 'My Coupons',
+                  title: DTexts.myCoupons,
                   subtitle: 'List of all the discounted coupons',
                   onTap: () {},
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.notification,
-                  title: 'Notifications',
+                  title: DTexts.notifications,
                   subtitle: 'Set any kind of notification message',
                   onTap: () {},
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.security_card,
-                  title: 'Account Privacy',
+                  title: DTexts.accountPrivacy,
                   subtitle: 'Manage data usage and connections',
                   onTap: () {},
                 ),
@@ -94,23 +96,23 @@ class SettingsScreen extends StatelessWidget {
 
                 DSettingsMenuTile(
                   icon: Iconsax.document_upload,
-                  title: 'Load Data',
+                  title: DTexts.loadData,
                   subtitle: 'Upload Data to your Cloud',
                   onTap: () {},
                 ),
                 DSettingsMenuTile(
                     icon: Iconsax.location,
-                    title: 'Geolocation',
+                    title: DTexts.geolocation,
                     subtitle: 'Set recommendation based on location',
                     trailing: Switch(value: false, onChanged: (value) {})),
                 DSettingsMenuTile(
                     icon: Iconsax.security_user,
-                    title: 'Safe Mode',
+                    title: DTexts.safeMode,
                     subtitle: 'Search result is safe for all ages',
                     trailing: Switch(value: false, onChanged: (value) {})),
                 DSettingsMenuTile(
                     icon: Iconsax.image,
-                    title: 'HD Image Quality',
+                    title: DTexts.hdImageQuality,
                     subtitle: 'Set image quality to be seen',
                     trailing: Switch(value: false, onChanged: (value) {})),
 

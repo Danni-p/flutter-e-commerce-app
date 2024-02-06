@@ -52,6 +52,17 @@ class DTexts {
   static const String account = "Account";
   static const String accountSettings = "Account Settings";
   static const String appSettings = "App Settings";
+  static const String myAddresses = "My Addresses";
+  static const String myCart = "My Cart";
+  static const String myOrders = "My Orders";
+  static const String bankAccount = "Bank Account";
+  static const String myCoupons = "My Coupons";
+  static const String notifications = "Notifications";
+  static const String accountPrivacy = "Account Privacy";
+  static const String loadData = "Load Data";
+  static const String geolocation = "Geolocation";
+  static const String safeMode = "Safe Mode";
+  static const String hdImageQuality = "HD Image Quality";
 
   // -- Profile
   static const String changeProfilePicture = "Change Profile Picture";
@@ -107,6 +118,11 @@ class DTexts {
   static const String shippingAddress = "Shipping Address";
   static const String paymentSuccess = "Payment Success!";
   static const String paymentSuccessSubTitle = "Your items will be shipped soon!";
+
+  // -- Order
+  static const String processing = "Processing";
+  static const String order = "Order";
+  static const String shippingDate = "Shipping Date";
 
   // -- Authentication Form Text
   static const String firstName = "First Name";

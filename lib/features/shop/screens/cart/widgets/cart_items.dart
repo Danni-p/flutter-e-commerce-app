@@ -8,14 +8,17 @@ class DCartItems extends StatelessWidget {
   const DCartItems({
     super.key,
     this.showAddRemoveButtons = true,
+    this.scrollable = true
   });
 
   final bool showAddRemoveButtons;
+  final bool scrollable;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
+      physics: scrollable ? null : const NeverScrollableScrollPhysics(),
       separatorBuilder: (_, __) =>
           const SizedBox(height: DSizes.spaceBtwSections),
       itemCount: 4,
