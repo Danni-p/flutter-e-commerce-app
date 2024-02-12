@@ -17,6 +17,7 @@ class DTexts {
   static const String dateOfBirth = "Date of Birth";
   static const String checkout = "Checkout";
   static const String save = "Save";
+  static const String brands = "Brands";
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";

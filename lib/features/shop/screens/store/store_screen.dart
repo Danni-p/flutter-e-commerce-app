@@ -6,11 +6,14 @@ import 'package:flutter_e_commerce_app/common/widgets/custom-shapes/containers/s
 import 'package:flutter_e_commerce_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_e_commerce_app/common/widgets/products/cart/cart_counter_icon.dart';
 import 'package:flutter_e_commerce_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_e_commerce_app/features/shop/screens/brand/all_brands_screen.dart';
+import 'package:flutter_e_commerce_app/features/shop/screens/brand/brand_products_screen.dart';
 import 'package:flutter_e_commerce_app/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
 import 'package:flutter_e_commerce_app/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -58,7 +61,8 @@ class StoreScreen extends StatelessWidget {
                           /// -- Featured Brands
                           DSectionHeading(
                             title: DTexts.featuredBrands,
-                            onPressed: () {},
+                            onPressed: () =>
+                                Get.to(() => const AllBrandsScreen()),
                             showActionButton: true,
                             buttonTitle: DTexts.viewAll,
                           ),
@@ -68,7 +72,9 @@ class StoreScreen extends StatelessWidget {
                               itemCount: 4,
                               mainAxisExtent: 80,
                               itemBuilder: (_, index) {
-                                return const DBrandCard();
+                                return DBrandCard(
+                                    onTap: () => Get.to(
+                                        () => const BrandProductsScreen()));
                               }),
                         ],
                       ),
@@ -105,6 +111,3 @@ class StoreScreen extends StatelessWidget {
     );
   }
 }
-
-
-

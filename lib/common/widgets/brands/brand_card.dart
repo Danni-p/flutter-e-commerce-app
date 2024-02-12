@@ -11,16 +11,18 @@ import 'package:flutter_e_commerce_app/utils/helpers/helper_functions.dart';
 class DBrandCard extends StatelessWidget {
   const DBrandCard({
     super.key, this.showBorder = true,
+    this.onTap
   });
 
   final bool showBorder;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     final isDark = DHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: DRoundedContainer(
         padding: const EdgeInsets.all(DSizes.sm),
         showBorder: showBorder,
