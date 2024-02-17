@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
-import 'package:flutter_e_commerce_app/features/personalization/screens/address/add_new_address_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/address/widgets/single_address.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
@@ -17,7 +17,7 @@ class UserAddressScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           backgroundColor: DColors.primary,
-          onPressed: () => Get.to(() => const AddNewAddressScreen()),
+          onPressed: () => Get.toNamed(Routes.addNewAddress),
           child: const Icon(Iconsax.add, color: DColors.white)),
       appBar: DAppBar(
         title: Text(DTexts.addresses, style: themeData.textTheme.headlineSmall),

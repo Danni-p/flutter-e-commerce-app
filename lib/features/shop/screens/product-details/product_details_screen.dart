@@ -5,15 +5,15 @@ import 'package:flutter_e_commerce_app/features/shop/screens/product-details/wid
 import 'package:flutter_e_commerce_app/features/shop/screens/product-details/widgets/product_image_slider.dart';
 import 'package:flutter_e_commerce_app/features/shop/screens/product-details/widgets/product_meta_data.dart';
 import 'package:flutter_e_commerce_app/features/shop/screens/product-details/widgets/rating_and_share.dart';
-import 'package:flutter_e_commerce_app/features/shop/screens/product-reviews/product_reviews_screen.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
-class ProductDetaisScreen extends StatelessWidget {
-  const ProductDetaisScreen({super.key});
+class ProductDetailsScreen extends StatelessWidget {
+  const ProductDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class ProductDetaisScreen extends StatelessWidget {
                       title: 'Reviews (199)',
                       showActionButton: false,
                     ),
-                    IconButton(onPressed: () => Get.to(() => const ProductReviewsScreen()), icon: const Icon(Iconsax.arrow_right_3))
+                    IconButton(onPressed: () => Get.toNamed(Routes.productReviews), icon: const Icon(Iconsax.arrow_right_3))
                   ],
                 ),
               ],

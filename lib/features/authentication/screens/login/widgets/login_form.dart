@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce_app/features/authentication/screens/forget-password/forget_password_screen.dart';
-import 'package:flutter_e_commerce_app/features/authentication/screens/signup/signup_screen.dart';
-import 'package:flutter_e_commerce_app/navigation_menu.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
 import 'package:get/get.dart';
@@ -54,7 +52,7 @@ class DLoginForm extends StatelessWidget {
     
                 /// Forget Password
                 TextButton(
-                    onPressed: () => Get.to(() => const ForgetPasswordScreen()),
+                    onPressed: () => Get.toNamed(Routes.forgetPassword),
                     child: const Text(DTexts.forgetPassword))
               ],
             ),
@@ -64,7 +62,7 @@ class DLoginForm extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(() => const NavigationMenu()),
+                    onPressed: () => Get.toNamed(Routes.navigationMenu),
                     child: const Text(DTexts.signIn))),
             const SizedBox(height: DSizes.spaceBtwItems),
     
@@ -72,7 +70,7 @@ class DLoginForm extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                    onPressed: () => Get.to(() => const SignupScreen()),
+                    onPressed: () => Get.toNamed(Routes.signup),
                     child: const Text(DTexts.createAccount)))
           ],
         ),

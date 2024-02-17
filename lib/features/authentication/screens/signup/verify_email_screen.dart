@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce_app/features/authentication/screens/login/login_screen.dart';
-import 'package:flutter_e_commerce_app/features/authentication/screens/success/success_screen.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
@@ -21,7 +20,7 @@ class VerifyEmailScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           actions: [
             IconButton(
-                onPressed: () => Get.offAll(() => const LoginScreen()),
+                onPressed: () => Get.offAllNamed(Routes.login),
                 icon: Icon(CupertinoIcons.clear,
                     color: isDark ? DColors.white : DColors.black))
           ],
@@ -55,12 +54,15 @@ class VerifyEmailScreen extends StatelessWidget {
                 SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () => Get.to(() => SuccessScreen(
-                            image: DImages.staticSuccessIllustration,
-                            title: DTexts.yourAccountCreatedTitle,
-                            subTitle: DTexts.yourAccountCreatedSubTitle,
-                            primaryBtnText: DTexts.continueText,
-                            onPrimaryPressed: () => Get.to(() => const LoginScreen()))),
+                        onPressed: () =>
+                            Get.toNamed(Routes.success, arguments: {
+                              'image': DImages.staticSuccessIllustration,
+                              'title': DTexts.yourAccountCreatedTitle,
+                              'subTitle': DTexts.yourAccountCreatedSubTitle,
+                              'primaryBtnText': DTexts.continueText,
+                              'onPrimaryPressed': () =>
+                                  Get.toNamed(Routes.login)
+                            }),
                         child: const Text(DTexts.continueText))),
                 const SizedBox(height: DSizes.spaceBtwItems),
                 SizedBox(

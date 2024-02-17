@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/success/success_screen.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
 import 'package:flutter_e_commerce_app/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:flutter_e_commerce_app/features/authentication/screens/login/login_screen.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -22,7 +22,7 @@ class ForgetPasswordScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           actions: [
             IconButton(
-                onPressed: () => Get.offAll(() => const LoginScreen()),
+                onPressed: () => Get.offAllNamed(Routes.login),
                 icon: Icon(CupertinoIcons.clear,
                     color: isDark ? DColors.white : DColors.black))
           ],
@@ -53,14 +53,16 @@ class ForgetPasswordScreen extends StatelessWidget {
                 SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () => Get.off(() => SuccessScreen(
-                            image: DImages.staticSuccessIllustration,
-                            title: DTexts.changeYourPasswordTitle,
-                            subTitle: DTexts.changeYourPasswordSubTitle,
-                            onPrimaryPressed: () => Get.back(),
-                            primaryBtnText: DTexts.done,
-                            secondaryBtnText: DTexts.resendEmail,
-                            onSecondaryPressed: () {},)),
+                        onPressed: () =>
+                            Get.off(() => const SuccessScreen(), arguments: {
+                              'image': DImages.staticSuccessIllustration,
+                              'title': DTexts.changeYourPasswordTitle,
+                              'subTitle': DTexts.changeYourPasswordSubTitle,
+                              'onPrimaryPressed': () => Get.back(),
+                              'primaryBtnText': DTexts.done,
+                              'secondaryBtnText': DTexts.resendEmail,
+                              'onSecondaryPressed': () {}
+                            }),
                         child: const Text(DTexts.submit)))
               ],
             ),

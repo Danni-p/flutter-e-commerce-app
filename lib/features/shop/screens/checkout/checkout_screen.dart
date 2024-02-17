@@ -5,9 +5,8 @@ import 'package:flutter_e_commerce_app/common/widgets/products/cart/coupon_code.
 import 'package:flutter_e_commerce_app/common/widgets/products/checkout/billing_address_section.dart';
 import 'package:flutter_e_commerce_app/common/widgets/products/checkout/billing_payment_section.dart';
 import 'package:flutter_e_commerce_app/common/widgets/products/checkout/billing_pricing_section.dart';
-import 'package:flutter_e_commerce_app/features/authentication/screens/success/success_screen.dart';
 import 'package:flutter_e_commerce_app/features/shop/screens/cart/widgets/cart_items.dart';
-import 'package:flutter_e_commerce_app/navigation_menu.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
@@ -74,13 +73,14 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(DSizes.defaultSpace),
         child: ElevatedButton(
-            onPressed: () => Get.to(() => SuccessScreen(
-                image: DImages.successfulPaymentIcon,
-                title: DTexts.paymentSuccess,
-                subTitle: DTexts.paymentSuccessSubTitle,
-                primaryBtnText: DTexts.continueText,
-                onPrimaryPressed: () => Get.offAll(() => const NavigationMenu()),
-              )),
+            onPressed: () => Get.toNamed(Routes.success, arguments: {
+                  'image': DImages.successfulPaymentIcon,
+                  'title': DTexts.paymentSuccess,
+                  'subTitle': DTexts.paymentSuccessSubTitle,
+                  'primaryBtnText': DTexts.continueText,
+                  'onPrimaryPressed': () =>
+                      Get.offAllNamed(Routes.navigationMenu)
+                }),
             child: const Text('${DTexts.checkout} \$256.0')),
       ),
     );

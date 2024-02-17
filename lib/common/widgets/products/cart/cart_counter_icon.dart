@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce_app/features/shop/screens/cart/cart_screen.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
@@ -20,7 +20,7 @@ class DCartCounterIcon extends StatelessWidget {
     return Stack(
       children: [
         IconButton(
-          onPressed: () => Get.to(() => const CartScreen()),
+          onPressed: () => Get.toNamed(Routes.cart),
           icon: Icon(Iconsax.shopping_bag, color: iconColor),
         ),
         Positioned(

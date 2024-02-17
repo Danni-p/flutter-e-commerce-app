@@ -6,7 +6,6 @@ import 'package:flutter_e_commerce_app/features/authentication/screens/on-boardi
 import 'package:flutter_e_commerce_app/features/authentication/screens/on-boarding/widgets/on_boarding_skip.dart';
 import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
-import 'package:get/get.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -14,7 +13,7 @@ class OnBoardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
-    final onBoardingController = Get.put(OnBoardingController());
+    final onBoardingController = OnBoardingController.instance;
 
     return Scaffold(
       body: Stack(children: [

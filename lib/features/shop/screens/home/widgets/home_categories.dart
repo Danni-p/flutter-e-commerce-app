@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/common/widgets/image-text/vertical_image_text.dart';
-import 'package:flutter_e_commerce_app/features/shop/screens/sub-categories/sub_categories_screen.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +20,7 @@ class DHomeCategories extends StatelessWidget {
             return DVerticalImageText(
               title: 'Sportgeräte',
               image: DImages.shoeIcon,
-              onTap: () => Get.to(() => const SubCategoriesScreen()),
+              onTap: () => Get.toNamed(Routes.subCategories),
             );
           }),
     );

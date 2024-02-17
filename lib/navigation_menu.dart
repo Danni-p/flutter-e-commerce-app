@@ -14,7 +14,7 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final navController = Get.put(NavigationController());
+    final navController = NavigationController.instance;
     final isDark = DHelperFunctions.isDarkMode(context);
 
     return Scaffold(
@@ -42,6 +42,8 @@ class NavigationMenu extends StatelessWidget {
 }
 
 class NavigationController extends GetxController {
+  static NavigationController get instance => Get.find();
+
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [
@@ -50,4 +52,8 @@ class NavigationController extends GetxController {
     const WishlistScreen(),
     const SettingsScreen()
   ];
+
+  void selectScreen(int screen) {
+    selectedIndex.value = screen;
+  }
 }

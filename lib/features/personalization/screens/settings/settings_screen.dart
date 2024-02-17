@@ -3,11 +3,8 @@ import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:flutter_e_commerce_app/common/widgets/custom-shapes/containers/primary_header_container.dart';
 import 'package:flutter_e_commerce_app/common/widgets/list-tiles/user_profile_tile.dart';
 import 'package:flutter_e_commerce_app/common/widgets/texts/section_heading.dart';
-import 'package:flutter_e_commerce_app/features/personalization/screens/address/user_address_screen.dart';
-import 'package:flutter_e_commerce_app/features/personalization/screens/profile/profile_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/settings/widgets/settings_menu_tile.dart';
-import 'package:flutter_e_commerce_app/features/shop/screens/cart/cart_screen.dart';
-import 'package:flutter_e_commerce_app/features/shop/screens/order/order_screen.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
@@ -33,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
                         .apply(color: DColors.white))),
 
             /// User Profile Card
-            DUserProfileTile(onPressed: () => Get.to(() => const ProfileScreen())),
+            DUserProfileTile(onPressed: () => Get.toNamed(Routes.profile)),
             const SizedBox(height: DSizes.spaceBtwSections),
           ])),
 
@@ -50,19 +47,19 @@ class SettingsScreen extends StatelessWidget {
                   icon: Iconsax.safe_home,
                   title: DTexts.myAddresses,
                   subtitle: 'Set shopping delivery address',
-                  onTap: () => Get.to(() => const UserAddressScreen()),
+                  onTap: () => Get.toNamed(Routes.userAddress),
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.shopping_cart,
                   title: DTexts.myCart,
                   subtitle: 'Add, remove products and move to checkout',
-                  onTap: () => Get.to(() => const CartScreen()),
+                  onTap: () => Get.toNamed(Routes.cart),
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.bag_tick,
                   title: DTexts.myOrders,
                   subtitle: 'In-progress and Completed Orders',
-                  onTap: () => Get.to(() => const OrderScreen()),
+                  onTap: () => Get.toNamed(Routes.order),
                 ),
                 DSettingsMenuTile(
                   icon: Iconsax.bank,
