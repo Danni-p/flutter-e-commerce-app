@@ -1,9 +1,12 @@
+import 'package:flutter_e_commerce_app/features/authentication/bindings/on_boarding_bindings.dart';
+import 'package:flutter_e_commerce_app/features/authentication/bindings/signup_bindings.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/forget-password/forget_password_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/login/login_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/on-boarding/on_boarding_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/signup/signup_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/signup/verify_email_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/success/success_screen.dart';
+import 'package:flutter_e_commerce_app/features/navigation-menu/bindings/navigation_menu_bindings.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/address/add_new_address_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/address/user_address_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/profile/profile_screen.dart';
@@ -20,7 +23,7 @@ import 'package:flutter_e_commerce_app/features/shop/screens/product-reviews/pro
 import 'package:flutter_e_commerce_app/features/shop/screens/store/store_screen.dart';
 import 'package:flutter_e_commerce_app/features/shop/screens/sub-categories/sub_categories_screen.dart';
 import 'package:flutter_e_commerce_app/features/shop/screens/wishlist/wishlist_screen.dart';
-import 'package:flutter_e_commerce_app/navigation_menu.dart';
+import 'package:flutter_e_commerce_app/features/navigation-menu/navigation_menu.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -55,12 +58,22 @@ class Routes {
 /// Add this list variable into your GetMaterialApp as the value of getPages parameter.
 /// You can get the reference to the above GetMaterialApp code.
 final getPages = [
-  GetPage(name: Routes.navigationMenu, page: () => const NavigationMenu()),
+  GetPage(
+      name: Routes.navigationMenu,
+      page: () => const NavigationMenu(),
+      binding: NavigationMenuBindings()),
   // authentcation
-  GetPage(name: Routes.forgetPassword, page: () => const ForgetPasswordScreen()),
+  GetPage(
+      name: Routes.forgetPassword, page: () => const ForgetPasswordScreen()),
   GetPage(name: Routes.login, page: () => const LoginScreen()),
-  GetPage(name: Routes.onBoarding, page: () => const OnBoardingScreen()),
-  GetPage(name: Routes.signup, page: () => const SignupScreen()),
+  GetPage(
+      name: Routes.onBoarding,
+      page: () => const OnBoardingScreen(),
+      binding: OnBoardingBindings()),
+  GetPage(
+      name: Routes.signup,
+      page: () => const SignupScreen(),
+      binding: SignupBindings()),
   GetPage(name: Routes.verifyEmail, page: () => const VerifyEmailScreen()),
   GetPage(name: Routes.success, page: () => const SuccessScreen()),
   // personalization
@@ -76,8 +89,10 @@ final getPages = [
   GetPage(name: Routes.checkout, page: () => const CheckoutScreen()),
   GetPage(name: Routes.home, page: () => const HomeScreen()),
   GetPage(name: Routes.order, page: () => const OrderScreen()),
-  GetPage(name: Routes.productDetails, page: () => const ProductDetailsScreen()),
-  GetPage(name: Routes.productReviews, page: () => const ProductReviewsScreen()),
+  GetPage(
+      name: Routes.productDetails, page: () => const ProductDetailsScreen()),
+  GetPage(
+      name: Routes.productReviews, page: () => const ProductReviewsScreen()),
   GetPage(name: Routes.store, page: () => const StoreScreen()),
   GetPage(name: Routes.subCategories, page: () => const SubCategoriesScreen()),
   GetPage(name: Routes.wishlist, page: () => const WishlistScreen())

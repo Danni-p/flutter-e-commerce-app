@@ -36,6 +36,8 @@ dependencies:
 
   # Backend
   supabase_flutter: ^2.3.3
+  connectivity_plus: ^2.3.8
+  lottie: ^3.0.0
   
   
 
@@ -63,6 +65,7 @@ flutter:
     - assets/images/products/
     - assets/images/user/
     - assets/images/reviews/
+    - assets/animations/
 
 # ---------------------------- Local Fonts -----------------------------------
   fonts:

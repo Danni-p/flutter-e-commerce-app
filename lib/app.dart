@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce_app/features/authentication/screens/on-boarding/on_boarding_screen.dart';
+import 'package:flutter_e_commerce_app/initial_bindings.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/theme/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -16,8 +16,9 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: DAppTheme.lightTheme,
       darkTheme: DAppTheme.darkTheme,
-      home: const OnBoardingScreen(),
+      initialRoute: Routes.onBoarding,
       getPages: getPages,
+      initialBinding: InitialBindings(),
     );
   }
 }

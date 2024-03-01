@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:flutter_e_commerce_app/common/widgets/login-signup/form_divider.dart';
 import 'package:flutter_e_commerce_app/common/widgets/login-signup/social_buttons.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/signup/widgets/signup_form.dart';
@@ -13,8 +14,8 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
+        appBar: const DAppBar(
+          showBackArrow: true,
         ),
         body: SingleChildScrollView(
             child: Padding(

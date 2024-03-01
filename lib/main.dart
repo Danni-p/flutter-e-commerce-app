@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/app.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_e_commerce_app/injection.dart' as di;
+import 'package:get_storage/get_storage.dart';
+// import 'package:flutter_e_commerce_app/injection.dart' as di;
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -15,7 +16,8 @@ void main() async {
   );
 
   /// -- Dependency Injection
-  await di.init();
+  await GetStorage.init();
+  // await di.init();
   
   runApp(const App());
 }

@@ -118,7 +118,8 @@ class DTexts {
   static const String paypal = "Paypal";
   static const String shippingAddress = "Shipping Address";
   static const String paymentSuccess = "Payment Success!";
-  static const String paymentSuccessSubTitle = "Your items will be shipped soon!";
+  static const String paymentSuccessSubTitle =
+      "Your items will be shipped soon!";
 
   // -- Order
   static const String processing = "Processing";
@@ -166,4 +167,22 @@ class DTexts {
       "Your account sucessfully created!";
   static const String yourAccountCreatedSubTitle =
       "Welcome to Your Ultimate Shopping Destination: Your Account is created. Unleash the Joy of Seamless Online Shopping!";
+
+  // Signup Controller
+  static const String signupLoadingDialog =
+      "We are processing your information...";
+  static const String noInternetConnection = "No Internet Connection";
+  static const String error = "Oh Snap!";
+  static const String acceptPrivacyPolicy = "Accept Privacy Policy";
+  static const String acceptPrivacyPolicyMessage =
+      "In order to create account, you must have to read and accept the Privacy Policy & terms of Use.";
+  static const String congratulations = "Congratulations";
+  static const String successMessage = "Your account has been created! Verify email to continue";
+
+  // Exceptions
+  static const String cacheException = "Attribute not found in cache.";
+  static const String authException =
+      "Authentication failed unexpectedly. Please try again.";
+  static const String unknownException = "An error occurred. Please try again.";
+  static const String postgresException = "A database error occured. Please try again.";
 }

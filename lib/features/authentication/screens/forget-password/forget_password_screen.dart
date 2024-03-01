@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/success/success_screen.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/images.dart';
@@ -18,8 +19,7 @@ class ForgetPasswordScreen extends StatelessWidget {
     final themeData = Theme.of(context);
     final isDark = DHelperFunctions.isDarkMode(context);
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
+        appBar: DAppBar(
           actions: [
             IconButton(
                 onPressed: () => Get.offAllNamed(Routes.login),

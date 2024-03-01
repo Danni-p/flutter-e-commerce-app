@@ -42,9 +42,12 @@ class DImages {
       "assets/icons/categories/icons8-smartphone-64.png";
 
   //Banners
-  static const String promoBanner1 = "assets/images/products/promo-banner-1.png";
-  static const String promoBanner2 = "assets/images/products/promo-banner-2.png";
-  static const String promoBanner3 = "assets/images/products/promo-banner-3.png";
+  static const String promoBanner1 =
+      "assets/images/products/promo-banner-1.png";
+  static const String promoBanner2 =
+      "assets/images/products/promo-banner-2.png";
+  static const String promoBanner3 =
+      "assets/images/products/promo-banner-3.png";
   static const String banner1 = "assets/images/banners/banner_1.jpg";
   static const String banner2 = "assets/images/banners/banner_2.jpg";
   static const String banner3 = "assets/images/banners/banner_3.jpg";
@@ -229,4 +232,8 @@ class DImages {
   static const String paytm = "assets/icons/payment-methods/paytm.png";
   static const String successfulPaymentIcon =
       "assets/icons/payment-methods/successful_payment_icon.png";
+
+  // -- Animations
+  static const String loadingAnimation =
+      "assets/animations/loader-animation.json";
 }

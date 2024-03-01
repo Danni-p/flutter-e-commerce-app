@@ -1,7 +1,7 @@
 import 'package:flutter_e_commerce_app/infrastructure/exceptions/exceptions.dart';
 import 'package:get_storage/get_storage.dart';
 
-abstract class LocalStorage {
+abstract class LocalDeviceStorage {
   static const isFirstTimeCache = 'IS_FIRST_TIME';
 
   // isFirstTime
@@ -9,25 +9,25 @@ abstract class LocalStorage {
   Future<void> cacheIsFirstTime({required bool flag, bool override = false});
 }
 
-class LocalStorageImpl implements LocalStorage {
+class LocalDeviceStorageImpl implements LocalDeviceStorage {
   final GetStorage deviceStorage;
 
-  LocalStorageImpl({required this.deviceStorage});
+  LocalDeviceStorageImpl({required this.deviceStorage});
 
   @override
   Future<void> cacheIsFirstTime(
       {required bool flag, bool override = false}) async {
     return override
-        ? await deviceStorage.write(LocalStorage.isFirstTimeCache, flag)
-        : await deviceStorage.writeIfNull(LocalStorage.isFirstTimeCache, flag);
+        ? await deviceStorage.write(LocalDeviceStorage.isFirstTimeCache, flag)
+        : await deviceStorage.writeIfNull(LocalDeviceStorage.isFirstTimeCache, flag);
   }
 
   @override
   bool getCachedIsFirstTime() {
-    final isFirstTime = deviceStorage.read(LocalStorage.isFirstTimeCache);
+    final isFirstTime = deviceStorage.read(LocalDeviceStorage.isFirstTimeCache);
 
     if (isFirstTime == null) {
-      throw CacheException();
+      throw DCacheException();
     }
 
     return isFirstTime;

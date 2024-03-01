@@ -3,7 +3,7 @@ import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:flutter_e_commerce_app/common/widgets/icons/rounded_icon_button.dart';
 import 'package:flutter_e_commerce_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_e_commerce_app/common/widgets/products/product-cards/product_card_vertical.dart';
-import 'package:flutter_e_commerce_app/navigation_menu.dart';
+import 'package:flutter_e_commerce_app/features/navigation-menu/navigation_menu.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
 import 'package:iconsax/iconsax.dart';

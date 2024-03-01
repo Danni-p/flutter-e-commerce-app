@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce_app/infrastructure/datasources/local_storage.dart';
+import 'package:flutter_e_commerce_app/infrastructure/datasources/local_device_storage.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:get/get.dart';
 
 class OnBoardingController extends GetxController {
   static OnBoardingController get instance => Get.find();
 
-  final LocalStorage localStorage;
+  final LocalDeviceStorage localDeviceStorage;
 
-  OnBoardingController({required this.localStorage});
+  OnBoardingController({required this.localDeviceStorage});
 
   /// Variables
   final pageController = PageController();
@@ -26,7 +26,7 @@ class OnBoardingController extends GetxController {
   /// Update Current Index & jump to next page
   void nextPage() {
     if (currentPageIndex.value == 2) {
-      localStorage.cacheIsFirstTime(flag: false, override: true);
+      localDeviceStorage.cacheIsFirstTime(flag: false, override: true);
       Get.offAllNamed(Routes.login);
     } else {
       final page = currentPageIndex.value + 1;
