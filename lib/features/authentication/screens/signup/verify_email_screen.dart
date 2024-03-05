@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
-import 'package:flutter_e_commerce_app/router/routes.dart';
+import 'package:flutter_e_commerce_app/domain/repositories/auth_repository.dart';
+import 'package:flutter_e_commerce_app/features/authentication/controller/signup/verify_email_controller.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
@@ -14,13 +15,18 @@ class VerifyEmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final email = Get.arguments['email'] as String?;
+    final password = Get.arguments['password'] as String?;
     final themeData = Theme.of(context);
     final isDark = DHelperFunctions.isDarkMode(context);
+    final controller = VerifyEmailController.instance;
+    final authRepository = AuthRepository.instance;
+
     return Scaffold(
         appBar: DAppBar(
           actions: [
             IconButton(
-                onPressed: () => Get.offAllNamed(Routes.login),
+                onPressed: () => authRepository.logout(),
                 icon: Icon(CupertinoIcons.clear,
                     color: isDark ? DColors.white : DColors.black))
           ],
@@ -41,7 +47,7 @@ class VerifyEmailScreen extends StatelessWidget {
                     style: themeData.textTheme.headlineMedium,
                     textAlign: TextAlign.center),
                 const SizedBox(height: DSizes.spaceBtwItems),
-                Text("danielpascheka@gmail.com",
+                Text(email ?? '',
                     style: themeData.textTheme.labelLarge,
                     textAlign: TextAlign.center),
                 const SizedBox(height: DSizes.spaceBtwItems),
@@ -55,20 +61,15 @@ class VerifyEmailScreen extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                         onPressed: () =>
-                            Get.toNamed(Routes.success, arguments: {
-                              'image': DImages.staticSuccessIllustration,
-                              'title': DTexts.yourAccountCreatedTitle,
-                              'subTitle': DTexts.yourAccountCreatedSubTitle,
-                              'primaryBtnText': DTexts.continueText,
-                              'onPrimaryPressed': () =>
-                                  Get.toNamed(Routes.login)
-                            }),
-                        child: const Text(DTexts.continueText))),
+                            controller.redirectToSuccessIfConfirmed(
+                                email: email ?? '', password: password ?? ''),
+                        child: const Text(DTexts.signIn))),
                 const SizedBox(height: DSizes.spaceBtwItems),
                 SizedBox(
                     width: double.infinity,
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.sendEmailVerification(
+                            email: email ?? ''),
                         child: const Text(DTexts.resendEmail))),
               ],
             ),

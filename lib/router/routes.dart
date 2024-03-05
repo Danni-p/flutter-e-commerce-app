@@ -1,5 +1,7 @@
+import 'package:flutter_e_commerce_app/features/authentication/bindings/login_bindings.dart';
 import 'package:flutter_e_commerce_app/features/authentication/bindings/on_boarding_bindings.dart';
 import 'package:flutter_e_commerce_app/features/authentication/bindings/signup_bindings.dart';
+import 'package:flutter_e_commerce_app/features/authentication/bindings/verify_email_bindings.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/forget-password/forget_password_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/login/login_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/on-boarding/on_boarding_screen.dart';
@@ -65,7 +67,10 @@ final getPages = [
   // authentcation
   GetPage(
       name: Routes.forgetPassword, page: () => const ForgetPasswordScreen()),
-  GetPage(name: Routes.login, page: () => const LoginScreen()),
+  GetPage(
+      name: Routes.login,
+      page: () => const LoginScreen(),
+      binding: LoginBindings()),
   GetPage(
       name: Routes.onBoarding,
       page: () => const OnBoardingScreen(),
@@ -74,7 +79,10 @@ final getPages = [
       name: Routes.signup,
       page: () => const SignupScreen(),
       binding: SignupBindings()),
-  GetPage(name: Routes.verifyEmail, page: () => const VerifyEmailScreen()),
+  GetPage(
+      name: Routes.verifyEmail,
+      page: () => const VerifyEmailScreen(),
+      binding: VerifyEmailBindings()),
   GetPage(name: Routes.success, page: () => const SuccessScreen()),
   // personalization
   GetPage(name: Routes.addNewAddress, page: () => const AddNewAddressScreen()),

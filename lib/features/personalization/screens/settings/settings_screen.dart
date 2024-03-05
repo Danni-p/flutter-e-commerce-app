@@ -3,6 +3,7 @@ import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:flutter_e_commerce_app/common/widgets/custom-shapes/containers/primary_header_container.dart';
 import 'package:flutter_e_commerce_app/common/widgets/list-tiles/user_profile_tile.dart';
 import 'package:flutter_e_commerce_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_e_commerce_app/domain/repositories/auth_repository.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/settings/widgets/settings_menu_tile.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
@@ -17,6 +18,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
+    final authRepository = AuthRepository.instance;
     return Scaffold(
       body: SingleChildScrollView(
           child: Column(
@@ -118,7 +120,7 @@ class SettingsScreen extends StatelessWidget {
                 SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                        onPressed: () {}, child: const Text(DTexts.logout))),
+                        onPressed: () => authRepository.logout(), child: const Text(DTexts.logout))),
                 const SizedBox(height: DSizes.spaceBtwSections * 2.5),
               ],
             ),

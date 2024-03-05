@@ -75,7 +75,10 @@ class SignupController extends GetxController {
       DFullScreenLoader.stopLoading();
       
       // move to verify email screen
-      await Get.toNamed(Routes.verifyEmail);
+      await Get.toNamed(Routes.verifyEmail, arguments: {
+        "email": email.text.trim(),
+        "password": password.text.trim()
+      });
       
     } catch (e) {
       // show some generic error to the user
@@ -92,11 +95,5 @@ class SignupController extends GetxController {
     if (flag != null) {
       privacyPolicy.value = flag;
     }
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    print('signupController closed...');
   }
 }

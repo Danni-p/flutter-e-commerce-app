@@ -177,12 +177,17 @@ class DTexts {
   static const String acceptPrivacyPolicyMessage =
       "In order to create account, you must have to read and accept the Privacy Policy & terms of Use.";
   static const String congratulations = "Congratulations";
-  static const String successMessage = "Your account has been created! Verify email to continue";
+  static const String successMessage =
+      "Your account has been created! Verify email to continue";
+
+  // Login Controller
+  static const String loginLoadingDialog = "Trying to login...";
 
   // Exceptions
   static const String cacheException = "Attribute not found in cache.";
   static const String authException =
       "Authentication failed unexpectedly. Please try again.";
   static const String unknownException = "An error occurred. Please try again.";
-  static const String postgresException = "A database error occured. Please try again.";
+  static const String postgresException =
+      "A database error occured. Please try again.";
 }

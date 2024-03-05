@@ -6,6 +6,7 @@ abstract class LocalDeviceStorage {
 
   // isFirstTime
   bool getCachedIsFirstTime();
+  /// only writes if not null
   Future<void> cacheIsFirstTime({required bool flag, bool override = false});
 }
 
