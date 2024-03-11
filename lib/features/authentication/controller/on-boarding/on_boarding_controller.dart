@@ -26,7 +26,7 @@ class OnBoardingController extends GetxController {
   /// Update Current Index & jump to next page
   void nextPage() {
     if (currentPageIndex.value == 2) {
-      localDeviceStorage.cacheIsFirstTime(flag: false, override: true);
+      localDeviceStorage.cacheValue(cacheKey: CacheKey.isFirstTime, value: false, override: true);
       Get.offAllNamed(Routes.login);
     } else {
       final page = currentPageIndex.value + 1;

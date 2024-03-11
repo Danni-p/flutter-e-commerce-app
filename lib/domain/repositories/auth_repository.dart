@@ -19,5 +19,5 @@ abstract class AuthRepository extends GetxController {
 
   Future<void> logout();
 
-  Future<bool> isEmailConfirmed();
+  Future<void> signInWithGoogle();
 }

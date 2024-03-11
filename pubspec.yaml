@@ -38,6 +38,7 @@ dependencies:
   supabase_flutter: ^2.3.3
   connectivity_plus: ^2.3.8
   lottie: ^3.0.0
+  google_sign_in: ^6.2.1
   
   
 

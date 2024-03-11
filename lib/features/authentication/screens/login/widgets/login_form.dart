@@ -35,18 +35,18 @@ class DLoginForm extends StatelessWidget {
 
             /// Password
             Obx(() => TextFormField(
-              controller: loginController.password,
-              validator: (value) => DValidator.validatePassword(value),
-              obscureText: loginController.hidePassword.value,
-              decoration: InputDecoration(
-                  prefixIcon: const Icon(Iconsax.password_check),
-                  suffixIcon: IconButton(
-                      icon: Icon(loginController.hidePassword.value
-                          ? Iconsax.eye_slash
-                          : Iconsax.eye),
-                      onPressed: loginController.toggleHidePassword),
-                  labelText: DTexts.password),
-            )),
+                  controller: loginController.password,
+                  validator: (value) => DValidator.validatePassword(value),
+                  obscureText: loginController.hidePassword.value,
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(Iconsax.password_check),
+                      suffixIcon: IconButton(
+                          icon: Icon(loginController.hidePassword.value
+                              ? Iconsax.eye_slash
+                              : Iconsax.eye),
+                          onPressed: loginController.toggleHidePassword),
+                      labelText: DTexts.password),
+                )),
             const SizedBox(
               height: DSizes.spaceBtwInputFields / 2,
             ),
@@ -57,7 +57,10 @@ class DLoginForm extends StatelessWidget {
                 /// Remember Me
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (val) {}),
+                    Obx(() => Checkbox(
+                        value: loginController.rememberMe.value,
+                        onChanged: (val) =>
+                            loginController.toggleRememberMe())),
                     const Text(DTexts.rememberMe)
                   ],
                 ),
