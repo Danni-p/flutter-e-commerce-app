@@ -1,8 +1,11 @@
+import 'package:flutter_e_commerce_app/features/authentication/bindings/forget_password_bindings.dart';
 import 'package:flutter_e_commerce_app/features/authentication/bindings/login_bindings.dart';
+import 'package:flutter_e_commerce_app/features/authentication/bindings/new_password_bindings.dart';
 import 'package:flutter_e_commerce_app/features/authentication/bindings/on_boarding_bindings.dart';
 import 'package:flutter_e_commerce_app/features/authentication/bindings/signup_bindings.dart';
 import 'package:flutter_e_commerce_app/features/authentication/bindings/verify_email_bindings.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/forget-password/forget_password_screen.dart';
+import 'package:flutter_e_commerce_app/features/authentication/screens/forget-password/new_password_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/login/login_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/on-boarding/on_boarding_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/signup/signup_screen.dart';
@@ -32,6 +35,7 @@ class Routes {
   static String navigationMenu = '/navigation-menu';
   // authentcation
   static String forgetPassword = '/forget-password';
+  static String newPassword = '/new-password';
   static String login = '/login';
   static String onBoarding = '/on-boarding';
   static String signup = '/signup';
@@ -66,7 +70,13 @@ final getPages = [
       binding: NavigationMenuBindings()),
   // authentcation
   GetPage(
-      name: Routes.forgetPassword, page: () => const ForgetPasswordScreen()),
+      name: Routes.forgetPassword,
+      page: () => const ForgetPasswordScreen(),
+      binding: ForgetPasswordBindings()),
+  GetPage(
+      name: Routes.newPassword,
+      page: () => const NewPasswordScreen(),
+      binding: NewPasswordBindings()),
   GetPage(
       name: Routes.login,
       page: () => const LoginScreen(),

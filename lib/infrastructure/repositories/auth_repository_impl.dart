@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/services.dart';
 import 'package:flutter_e_commerce_app/domain/entities/user_credentials.dart';
 import 'package:flutter_e_commerce_app/domain/repositories/auth_repository.dart';
 import 'package:flutter_e_commerce_app/infrastructure/datasources/local_device_storage.dart';
@@ -14,7 +17,8 @@ import 'package:flutter_e_commerce_app/infrastructure/extensions/user_credential
 class AuthRepositoryImpl extends AuthRepository {
   final LocalDeviceStorage localDeviceStorage;
   final SupabaseClient supabaseClient;
-  final _redirectUri = 'io.supabase.flutterquickstart://login-callback/';
+  late StreamSubscription<AuthState> authStreamSubscription;
+  final _baseUri = 'https://ecommerce.akdgames.de';
   final _iosClientId =
       '902998645100-jv7i77n1cqovjunpnvhenvutde9oiicc.apps.googleusercontent.com';
   final _webClientId =
@@ -27,11 +31,44 @@ class AuthRepositoryImpl extends AuthRepository {
   @override
   void onReady() {
     FlutterNativeSplash.remove();
+    onAuthStateChangedListener();
     screenRedirect();
   }
 
   @override
+  void onClose() {
+    authStreamSubscription.cancel();
+    super.onClose();
+  }
+
+  void onAuthStateChangedListener() {
+    authStreamSubscription = supabaseClient.auth.onAuthStateChange.listen((data) {
+      final AuthChangeEvent event = data.event;
+      final Session? session = data.session;
+      print('auth state changed: $event , $session');
+      if (event == AuthChangeEvent.passwordRecovery) {
+        Get.offAllNamed(Routes.newPassword);
+        // handle initial session
+      } else if (event == AuthChangeEvent.signedIn) {
+        // handle sign in event
+      } else if (event == AuthChangeEvent.initialSession) {
+        // Get.offAllNamed(Routes.login);
+        // handle sign in event
+      }  else if (event == AuthChangeEvent.signedOut) {
+        // handle sign out event
+      } else if (event == AuthChangeEvent.userDeleted) {
+        // handle password recovery event
+      } else if (event == AuthChangeEvent.tokenRefreshed) {
+        // handle token refreshed event
+      } else if (event == AuthChangeEvent.userUpdated) {
+        // handle user updated event
+      }
+    });
+  }
+
+  @override
   void screenRedirect() {
+    print('call screen redirect...');
     final user = supabaseClient.auth.currentUser;
     if (user != null) {
       if (user.emailConfirmedAt != null) {
@@ -64,7 +101,7 @@ class AuthRepositoryImpl extends AuthRepository {
           email: email,
           password: password,
           data: userData.toJson(),
-          emailRedirectTo: _redirectUri);
+          emailRedirectTo: '$_baseUri${Routes.login}');
 
       if (authResponse.user == null) {
         throw 'Something went really wrong';
@@ -99,14 +136,27 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<void> sendEmailVerification({required String email}) async {
+  Future<void> sendVerificationEmail({required String email}) async {
     try {
       if (email.isEmpty) {
         throw DNoEmailProvidedException();
       }
 
       await supabaseClient.auth.resend(
-          type: OtpType.signup, email: email, emailRedirectTo: _redirectUri);
+          type: OtpType.signup, email: email, emailRedirectTo: '$_baseUri${Routes.login}');
+    } catch (e) {
+      throw DSupabaseAuthExceptionMapper.getException(e.toString());
+    }
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    try {
+      if (email.isEmpty) {
+        throw DNoEmailProvidedException();
+      }
+
+      await supabaseClient.auth.resetPasswordForEmail(email, redirectTo: '$_baseUri${Routes.newPassword}');
     } catch (e) {
       throw DSupabaseAuthExceptionMapper.getException(e.toString());
     }
@@ -137,8 +187,22 @@ class AuthRepositoryImpl extends AuthRepository {
     } on AuthException catch (e) {
       print('auth exception: ${e.message}');
       throw DSupabaseAuthExceptionMapper.getException(e.message);
+    }on PlatformException catch (e) {
+      print('platform exception: ${e.message}:${e.code}:${e.details}');
+      throw e.message ?? 'A Platform Exception has been occured.';
     } catch (e) {
-      print(e);
+      print('sth is really wrong $e');
+      throw DSupabaseAuthExceptionMapper.getException(e.toString());
+    }
+  }
+
+  @override
+  Future<void> resetPassword({required String password}) async {
+    try {
+      await supabaseClient.auth.updateUser(UserAttributes(password: password));
+    } on AuthException catch (e) {
+      throw DSupabaseAuthExceptionMapper.getException(e.message);
+    } catch (e) {
       throw DSupabaseAuthExceptionMapper.getException(e.toString());
     }
   }

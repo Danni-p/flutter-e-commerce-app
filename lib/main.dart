@@ -15,6 +15,8 @@ void main() async {
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsb2p6ZXZseWxmanJrd2xmbmVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDMyMjUyOTQsImV4cCI6MjAxODgwMTI5NH0.A28R1djiBrJAh_6WJIufc-Y-2zMVLwe3srywnhmVqEY',
   );
 
+  
+
   /// -- Dependency Injection
   await GetStorage.init();
   // await di.init();

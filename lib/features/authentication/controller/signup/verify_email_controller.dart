@@ -18,7 +18,7 @@ class VerifyEmailController extends GetxController {
   /// Send Email Verification link
   sendEmailVerification({required String email}) async {
     try {
-      await AuthRepository.instance.sendEmailVerification(email: email);
+      await AuthRepository.instance.sendVerificationEmail(email: email);
       DLoaders.successSnackBar(
           title: 'Email Sent',
           message: 'Please check your inbox and verify your email!');

@@ -13,7 +13,11 @@ abstract class AuthRepository extends GetxController {
   Future<UserCredentials> loginWithEmailAndPassword(
       {required String email, required String password});
 
-  Future<void> sendEmailVerification({required String email});
+  Future<void> sendVerificationEmail({required String email});
+
+  Future<void> sendPasswordResetEmail({required String email});
+
+  Future<void> resetPassword({required String password});
 
   void screenRedirect();
 

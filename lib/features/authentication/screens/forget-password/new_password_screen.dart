@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
-import 'package:flutter_e_commerce_app/features/authentication/controller/forget-password/forget_password_controller.dart';
+import 'package:flutter_e_commerce_app/features/authentication/controller/forget-password/new_password_controller.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
@@ -11,12 +11,12 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 
-class ForgetPasswordScreen extends StatelessWidget {
-  const ForgetPasswordScreen({super.key});
+class NewPasswordScreen extends StatelessWidget {
+  const NewPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final forgetPasswordController = ForgetPasswordController.instance;
+    final newPasswordController = NewPasswordController.instance;
     final themeData = Theme.of(context);
     final isDark = DHelperFunctions.isDarkMode(context);
     return Scaffold(
@@ -35,24 +35,30 @@ class ForgetPasswordScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 /// Headings
-                Text(DTexts.forgetPasswordTitle,
+                Text(DTexts.enterPasswordTitle,
                     style: themeData.textTheme.headlineMedium),
                 const SizedBox(height: DSizes.spaceBtwSections),
-                Text(DTexts.forgetPasswordSubTitle,
+                Text(DTexts.enterPasswordSubTitle,
                     style: themeData.textTheme.labelMedium),
                 const SizedBox(height: DSizes.spaceBtwSections * 2),
 
                 /// Text Field
                 Form(
-                  key: forgetPasswordController.forgetPasswordFormKey,
-                  child: TextFormField(
-                    controller: forgetPasswordController.email,
-                    validator: (value) => DValidator.validateEmail(value),
-                    decoration: const InputDecoration(
-                        labelText: DTexts.email,
-                        prefixIcon: Icon(Iconsax.direct_right)),
+                  key: newPasswordController.newPasswordFormKey,
+                  child: Obx(() => TextFormField(
+                    controller: newPasswordController.password,
+                    obscureText: newPasswordController.hidePassword.value,
+                    validator: (value) => DValidator.validatePassword(value),
+                    decoration: InputDecoration(
+                  labelText: DTexts.password,
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                      onPressed: newPasswordController.toggleHidePassword,
+                      icon: Icon(newPasswordController.hidePassword.value
+                          ? Iconsax.eye_slash
+                          : Iconsax.eye))),
                   ),
-                ),
+                )),
                 const SizedBox(height: DSizes.spaceBtwSections),
 
                 /// Submit Button
@@ -60,7 +66,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                         onPressed: () =>
-                            forgetPasswordController.sendPasswordResetEmail(),
+                            newPasswordController.resetPassword(),
                         child: const Text(DTexts.submit)))
               ],
             ),

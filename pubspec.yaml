@@ -24,8 +24,8 @@ dependencies:
   # Utility Packages
   http: ^1.1.2
   intl: ^0.19.0
-  url_launcher: ^6.2.4
-  logger: ^2.0.2+1
+  url_launcher: ^6.2.5
+  logger: ^2.1.0
   flutter_native_splash: ^2.3.11
   smooth_page_indicator: ^1.1.0
 
@@ -35,9 +35,9 @@ dependencies:
   flutter_rating_bar: ^4.0.1
 
   # Backend
-  supabase_flutter: ^2.3.3
+  supabase_flutter: ^2.3.4
   connectivity_plus: ^2.3.8
-  lottie: ^3.0.0
+  lottie: ^3.1.0
   google_sign_in: ^6.2.1
   
   

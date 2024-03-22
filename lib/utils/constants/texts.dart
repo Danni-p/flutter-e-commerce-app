@@ -155,6 +155,9 @@ class DTexts {
   static const String forgetPasswordTitle = "Forget password";
   static const String forgetPasswordSubTitle =
       "Don't worry, sometimes people can forget too. Enter your email and we will send you a password reset link.";
+  static const String enterPasswordTitle = "Enter new password";
+  static const String enterPasswordSubTitle =
+      "Please type in your new password. It should have been a length greater than 6 and at least one special character must exist.";
   static const String changeYourPasswordTitle = "Password Reset Email Sent";
   static const String changeYourPasswordSubTitle =
       "Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.";
@@ -167,6 +170,9 @@ class DTexts {
       "Your account sucessfully created!";
   static const String yourAccountCreatedSubTitle =
       "Welcome to Your Ultimate Shopping Destination: Your Account is created. Unleash the Joy of Seamless Online Shopping!";
+  static const String changedPasswordTitle = "Password Successfully Changed";
+  static const String changedPasswordSubTitle =
+      "Your Account is now accessable with your new password. Keep Your password save.";
 
   // Signup Controller
   static const String signupLoadingDialog =
@@ -182,6 +188,15 @@ class DTexts {
 
   // Login Controller
   static const String loginLoadingDialog = "Trying to login...";
+
+  // ForgetPassword Controller
+  static const String forgetPasswordLoadingDialog = "Processing your request...";
+  static const String emailSent = "Email sent";
+  static const String emailSentDescription = "Email link sent to reset your password";
+
+    // NewPassword Controller
+  static const String passwordChanged = "Password changed";
+  static const String passwordChangedDescription = "You have successfully changed your password. Please login with your new password.";
 
   // Exceptions
   static const String cacheException = "Attribute not found in cache.";
