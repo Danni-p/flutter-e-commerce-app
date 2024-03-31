@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce_app/domain/entities/user_data.dart';
 import 'package:flutter_e_commerce_app/domain/repositories/auth_repository.dart';
-import 'package:flutter_e_commerce_app/infrastructure/models/user_data_model.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
@@ -56,7 +56,7 @@ class SignupController extends GetxController {
       }
 
       // save authenticated user data in supabase store
-      final userData = UserDataModel(
+      final userData = UserData(
         id: '', // not necessary, will be set by supabase
         firstName: firstName.text.trim(),
         lastName: lastName.text.trim(),

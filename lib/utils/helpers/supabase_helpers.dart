@@ -1,19 +1,11 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 extension SupabaseHelpers on SupabaseClient {
-  SupabaseQueryBuilder profilesCollection() {
+  SupabaseQueryBuilder usersCollection() {
     return Supabase.instance.client.from("profiles");
   }
-} 
- /*extension SupabaseHelpers on SupabaseClient {
-  Future<void> userDocument() async {
-    final userOption = serviceLocator<AuthRepository>().getLoggedInUser();
-    final user = userOption.getOrElse(() => throw NotAuthenticatedError());
-    // return Supabase.instance.client.from("user");
+
+  Future<List<Map<String,dynamic>>> getUserById({required String id}) async {
+    return await Supabase.instance.client.usersCollection().select('*').eq('id', id);
   }
 } 
-
-extension DocumentReferenceExt on DocumentReference {
-  CollectionReference<Map<String,dynamic>> get memberCollection => collection("members"); 
-  CollectionReference<Map<String,dynamic>> get itemCollection => collection("items"); 
-}*/

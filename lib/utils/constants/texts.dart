@@ -18,6 +18,9 @@ class DTexts {
   static const String checkout = "Checkout";
   static const String save = "Save";
   static const String brands = "Brands";
+  static const String verify = "Verify";
+  static const String delete = "Delete";
+  static const String cancel = "Cancel";
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";
@@ -36,7 +39,6 @@ class DTexts {
 
   // -- Home
   static const String homeAppbarTitle = "Good day for shopping";
-  static const String homeAppbarSubTitle = "Taimoor Sikander";
   static const String popularProducts = "Popular Products";
 
   // -- Store
@@ -69,7 +71,7 @@ class DTexts {
   static const String changeProfilePicture = "Change Profile Picture";
   static const String profileInformation = "Profile Information";
   static const String personalInformation = "Personal Information";
-  static const String closeAccount = "Close Account";
+  static const String deleteAccount = "Delete Account";
 
   // -- Header
   static const String storeSearch = "Search in Store";
@@ -128,7 +130,7 @@ class DTexts {
 
   // -- Authentication Form Text
   static const String firstName = "First Name";
-  static const String lasstName = "Last Name";
+  static const String lastName = "Last Name";
   static const String email = "E-Mail";
   static const String password = "Password";
   static const String newPassword = "New Password";
@@ -190,13 +192,16 @@ class DTexts {
   static const String loginLoadingDialog = "Trying to login...";
 
   // ForgetPassword Controller
-  static const String forgetPasswordLoadingDialog = "Processing your request...";
+  static const String forgetPasswordLoadingDialog =
+      "Processing your request...";
   static const String emailSent = "Email sent";
-  static const String emailSentDescription = "Email link sent to reset your password";
+  static const String emailSentDescription =
+      "Email link sent to reset your password";
 
-    // NewPassword Controller
+  // NewPassword Controller
   static const String passwordChanged = "Password changed";
-  static const String passwordChangedDescription = "You have successfully changed your password. Please login with your new password.";
+  static const String passwordChangedDescription =
+      "You have successfully changed your password. Please login with your new password.";
 
   // Exceptions
   static const String cacheException = "Attribute not found in cache.";

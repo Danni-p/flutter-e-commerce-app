@@ -37,7 +37,7 @@ class DSignupForm extends StatelessWidget {
                   validator: (value) =>
                       DValidator.validateEmptyText('Last Name', value),
                   decoration: const InputDecoration(
-                      labelText: DTexts.lasstName,
+                      labelText: DTexts.lastName,
                       prefixIcon: Icon(Iconsax.user)),
                 ),
               )

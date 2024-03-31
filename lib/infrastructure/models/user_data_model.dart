@@ -1,22 +1,23 @@
-import 'package:flutter_e_commerce_app/utils/formatters/formatter.dart';
+import 'package:flutter_e_commerce_app/domain/entities/user_data.dart';
+import 'package:get/get.dart';
 
 class UserDataModel {
   final String id;
-  final String firstName;
-  final String lastName;
-  final String username;
-  final String email;
-  final String phoneNumber;
-  final String profilePicture;
+  final String? firstName;
+  final String? lastName;
+  final String? username;
+  final String? email;
+  final String? phoneNumber;
+  final String? profilePicture;
 
   UserDataModel(
-      {required this.firstName,
-      required this.lastName,
-      required this.username,
-      required this.email,
-      required this.phoneNumber,
-      required this.profilePicture,
-      required this.id});
+      {required this.id,
+      this.firstName,
+      this.lastName,
+      this.username,
+      this.email,
+      this.phoneNumber,
+      this.profilePicture});
 
   UserDataModel copyWith(
       {String? id,
@@ -36,50 +37,54 @@ class UserDataModel {
         profilePicture: profilePicture ?? this.profilePicture);
   }
 
-  get formattedPhoneNumber => DFormatter.formatPhoneNumber(phoneNumber);
+  factory UserDataModel.empty() => UserDataModel(id: '');
 
-  static List<String> nameParts(fullName) => fullName.split(" ");
+  Map<String, dynamic> toJson() {
 
-  static String generateUserName(fullName) {
-    final nameParts = UserDataModel.nameParts(fullName);
-    String firstName = nameParts[0].toLowerCase();
-    String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";
+    Map<String, dynamic> json = {};
+    json.addIf(firstName != null, 'first_name', firstName);
+    json.addIf(lastName != null, 'last_name', lastName);
+    json.addIf(username != null, 'username', username);
+    json.addIf(email != null, 'email', email);
+    json.addIf(phoneNumber != null, 'phone_number', phoneNumber);
+    json.addIf(profilePicture != null, 'profile_picture', profilePicture);
 
-    String camelCaseUsername = '$firstName$lastName';
-    return 'cwt_$camelCaseUsername';
+    return json;
   }
 
-  factory UserDataModel.empty() => UserDataModel(
-      id: '',
-      firstName: '',
-      lastName: '',
-      username: '',
-      email: '',
-      phoneNumber: '',
-      profilePicture: '');
+  String get fullName => '$firstName $lastName';
 
-  Map<String,dynamic> toJson() {
-    return {
-      "first_name": firstName,
-      "last_name": lastName,
-      "username": username,
-      "email": email,
-      "phone_number": phoneNumber,
-      "profile_picture": profilePicture
-    };
+  factory UserDataModel.fromJson(Map<String, dynamic> userRecord) {
+    return UserDataModel(
+        firstName: userRecord['first_name'],
+        lastName: userRecord['last_name'],
+        username: userRecord['username'],
+        email: userRecord['email'],
+        phoneNumber: userRecord['phone_number'],
+        profilePicture: userRecord['profile_picture'],
+        id: userRecord['id']);
   }
 
-  /* factory UserDataModel.fromJson(Map<String, dynamic> userRecord) {
+  UserData toDomain() {
+    return UserData(
+        id: id,
+        firstName: firstName ?? '',
+        lastName: lastName ?? '',
+        username: username ?? '',
+        email: email ?? '',
+        phoneNumber: phoneNumber ?? '',
+        profilePicture: profilePicture ?? '');
+  }
 
-  } */
+  factory UserDataModel.fromDomain(UserData userData) => UserDataModel(
+        id: userData.id,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        username: userData.username,
+        email: userData.email,
+        phoneNumber: userData.phoneNumber,
+        profilePicture: userData.profilePicture
+      );
 
-  /*UserData toDomain() {
-    return UserCredential(
-        id: UniqueId.fromUniqueString(id),
-        firstName: firstName,
-        lastName: lastName,
-        username: username,
-        deleted: deleted,
-        amount: amount);
-  }*/
+  
 }

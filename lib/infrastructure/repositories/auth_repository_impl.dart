@@ -2,17 +2,19 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_e_commerce_app/domain/entities/user_credentials.dart';
+import 'package:flutter_e_commerce_app/domain/entities/user_data.dart';
 import 'package:flutter_e_commerce_app/domain/repositories/auth_repository.dart';
 import 'package:flutter_e_commerce_app/infrastructure/datasources/local_device_storage.dart';
 import 'package:flutter_e_commerce_app/infrastructure/exceptions/exceptions.dart';
 import 'package:flutter_e_commerce_app/infrastructure/exceptions/supabase_auth_exception.dart';
+import 'package:flutter_e_commerce_app/infrastructure/extensions/edge_functions_extensions.dart';
 import 'package:flutter_e_commerce_app/infrastructure/models/user_data_model.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:flutter_e_commerce_app/infrastructure/extensions/user_credentials_mapper.dart';
+import 'package:flutter_e_commerce_app/infrastructure/extensions/user_extensions.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   final LocalDeviceStorage localDeviceStorage;
@@ -42,7 +44,7 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   void onAuthStateChangedListener() {
-    authStreamSubscription = supabaseClient.auth.onAuthStateChange.listen((data) {
+    authStreamSubscription = authStateChangeListener.listen((data) {
       final AuthChangeEvent event = data.event;
       final Session? session = data.session;
       print('auth state changed: $event , $session');
@@ -50,6 +52,7 @@ class AuthRepositoryImpl extends AuthRepository {
         Get.offAllNamed(Routes.newPassword);
         // handle initial session
       } else if (event == AuthChangeEvent.signedIn) {
+        print("signed in...");
         // handle sign in event
       } else if (event == AuthChangeEvent.initialSession) {
         // Get.offAllNamed(Routes.login);
@@ -92,25 +95,30 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
+  User? get currentUser => supabaseClient.auth.currentUser;
+
+  @override
   Future<UserCredentials> registerWithEmailAndPassword(
       {required String email,
       required String password,
-      required UserDataModel userData}) async {
+      required UserData userData}) async {
     try {
       final authResponse = await supabaseClient.auth.signUp(
           email: email,
           password: password,
-          data: userData.toJson(),
+          data: UserDataModel.fromDomain(userData).toJson(),
           emailRedirectTo: '$_baseUri${Routes.login}');
 
       if (authResponse.user == null) {
         throw 'Something went really wrong';
       }
-
+      print(authResponse);
       return authResponse.user!.toDomain();
     } on AuthException catch (e) {
       throw DAuthException(msg: e.message).message;
     } catch (e) {
+      // ClientException with SocketException
+      print(e);
       throw 'Something went wrong. Please try again!';
     }
   }
@@ -217,5 +225,18 @@ class AuthRepositoryImpl extends AuthRepository {
     } catch (e) {
       throw DSupabaseAuthExceptionMapper.getException(e.toString());
     }
+  }
+  
+  @override
+  Stream<AuthState> get authStateChangeListener => supabaseClient.auth.onAuthStateChange;
+  
+  @override
+  Future<void> deleteAccount() async {
+    try {
+      await supabaseClient.functions.deleteAccount();
+    } on FunctionException catch (e) {
+      print("${e.status} : ${e.details}");
+    }
+    
   }
 }

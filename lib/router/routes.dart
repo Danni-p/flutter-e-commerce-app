@@ -12,8 +12,11 @@ import 'package:flutter_e_commerce_app/features/authentication/screens/signup/si
 import 'package:flutter_e_commerce_app/features/authentication/screens/signup/verify_email_screen.dart';
 import 'package:flutter_e_commerce_app/features/authentication/screens/success/success_screen.dart';
 import 'package:flutter_e_commerce_app/features/navigation-menu/bindings/navigation_menu_bindings.dart';
+import 'package:flutter_e_commerce_app/features/personalization/bindings/change_full_name_bindings.dart';
+import 'package:flutter_e_commerce_app/features/personalization/bindings/profile_bindings.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/address/add_new_address_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/address/user_address_screen.dart';
+import 'package:flutter_e_commerce_app/features/personalization/screens/profile/change_full_name_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/profile/profile_screen.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/settings/settings_screen.dart';
 import 'package:flutter_e_commerce_app/features/shop/screens/all-products/all_products_screen.dart';
@@ -45,6 +48,7 @@ class Routes {
   static String addNewAddress = '/add-new-address';
   static String userAddress = '/user-address';
   static String profile = '/profile';
+  static String changeFullName = '/change-full-name';
   static String settings = '/settings';
   // shop
   static String allProducts = '/all-products';
@@ -68,7 +72,7 @@ final getPages = [
       name: Routes.navigationMenu,
       page: () => const NavigationMenu(),
       binding: NavigationMenuBindings()),
-  // authentcation
+  // authentication
   GetPage(
       name: Routes.forgetPassword,
       page: () => const ForgetPasswordScreen(),
@@ -97,7 +101,14 @@ final getPages = [
   // personalization
   GetPage(name: Routes.addNewAddress, page: () => const AddNewAddressScreen()),
   GetPage(name: Routes.userAddress, page: () => const UserAddressScreen()),
-  GetPage(name: Routes.profile, page: () => const ProfileScreen()),
+  GetPage(
+      name: Routes.profile,
+      page: () => const ProfileScreen(),
+      binding: ProfileBindings()),
+  GetPage(
+      name: Routes.changeFullName,
+      page: () => const ChangeFullNameScreen(),
+      binding: ChangeFullNameBindings()),
   GetPage(name: Routes.settings, page: () => const SettingsScreen()),
   // shop
   GetPage(name: Routes.allProducts, page: () => const AllProductsScreen()),

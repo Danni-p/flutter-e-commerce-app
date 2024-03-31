@@ -1,5 +1,6 @@
 import 'package:flutter_e_commerce_app/domain/repositories/auth_repository.dart';
 import 'package:flutter_e_commerce_app/domain/repositories/user_repository.dart';
+import 'package:flutter_e_commerce_app/features/personalization/controller/personalization/user_data_controller.dart';
 import 'package:flutter_e_commerce_app/infrastructure/datasources/local_device_storage.dart';
 import 'package:flutter_e_commerce_app/infrastructure/repositories/auth_repository_impl.dart';
 import 'package:flutter_e_commerce_app/infrastructure/repositories/user_repository_impl.dart';
@@ -21,6 +22,10 @@ class InitialBindings extends Bindings {
   // can not be put lazily because the onReady method has to be triggered immediatly after this init method
   Get.put<AuthRepository>(AuthRepositoryImpl(localDeviceStorage: Get.find(), supabaseClient: Get.find()), permanent: true);
   Get.lazyPut<UserRepository>(() => UserRepositoryImpl(supabaseClient: Get.find()), fenix: true);
+
+  //! Global Controllers
+  // Controllers that not just exist for a single screen but for the lifecycle of the whole app
+  Get.lazyPut<UserDataController>(() => UserDataController(authRepository: Get.find(), userRepository: Get.find()), fenix: true);
 
   //! Helpers
   Get.lazyPut(() => NetworkManager(), fenix: true);

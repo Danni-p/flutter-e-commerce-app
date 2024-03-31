@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:flutter_e_commerce_app/common/widgets/images/rounded_image.dart';
 import 'package:flutter_e_commerce_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_e_commerce_app/features/personalization/controller/personalization/user_data_controller.dart';
+import 'package:flutter_e_commerce_app/features/personalization/controller/profile/profile_controller.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/profile/widgets/profile_menu.dart';
+import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
 import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -14,6 +18,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userDataController = UserDataController.instance;
+    final profileController = ProfileController.instance;
     return Scaffold(
       appBar: const DAppBar(
         showBackArrow: true,
@@ -49,12 +55,12 @@ class ProfileScreen extends StatelessWidget {
 
               DProfileMenu(
                 title: DTexts.name,
-                value: 'Coding with T',
-                onPressed: () {},
+                value: userDataController.userData.value.fullName,
+                onPressed: () => Get.toNamed(Routes.changeFullName),
               ),
               DProfileMenu(
                 title: DTexts.userName,
-                value: 'coding_with_t',
+                value: userDataController.userData.value.username,
                 onPressed: () {},
               ),
 
@@ -69,18 +75,18 @@ class ProfileScreen extends StatelessWidget {
 
               DProfileMenu(
                 title: DTexts.userId,
-                value: '123987',
+                value: userDataController.userData.value.id,
                 onPressed: () {},
                 icon: Iconsax.copy,
               ),
               DProfileMenu(
                 title: DTexts.email,
-                value: 'danielpascheka@web.de',
+                value: userDataController.userData.value.email,
                 onPressed: () {},
               ),
               DProfileMenu(
                 title: DTexts.phoneNumber,
-                value: '0123 456 7890',
+                value: userDataController.userData.value.phoneNumber,
                 onPressed: () {},
               ),
               DProfileMenu(
@@ -98,7 +104,13 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: DSizes.spaceBtwItems),
 
               Center(
-                child: TextButton(onPressed: () {}, child: const Text(DTexts.closeAccount, style: TextStyle(color: DColors.error),)),
+                child: TextButton(
+                    onPressed: () =>
+                        profileController.showDeleteAccountWarningPopup(),
+                    child: const Text(
+                      DTexts.deleteAccount,
+                      style: TextStyle(color: DColors.error),
+                    )),
               )
             ],
           ),

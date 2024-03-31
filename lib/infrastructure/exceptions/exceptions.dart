@@ -31,3 +31,11 @@ class DUnknownException implements Exception {
 
   String get message => msg ?? DTexts.unknownException;
 }
+
+class NoUserFoundException implements Exception {
+  final String? msg;
+
+  NoUserFoundException({this.msg});
+
+  String get message => msg ?? DTexts.unknownException;
+}
