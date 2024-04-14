@@ -10,8 +10,8 @@ class NetworkManager extends GetxController {
   static NetworkManager get instance => Get.find();
 
   final Connectivity _connectivity = Connectivity();
-  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
-  final Rx<ConnectivityResult> _connectionStatus = ConnectivityResult.none.obs;
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+  final _connectionStatus = RxList.of([ConnectivityResult.none]);
 
   /// Initialize the network manager and set up a stream to continually chekc the connection status.
  @override
@@ -21,9 +21,9 @@ class NetworkManager extends GetxController {
  } 
 
  /// Update the connection status based on changes in connectivity and show a relevant popup for no internet connection.
- Future<void> _updateConnectionStatus(ConnectivityResult result) async {
+ Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
   _connectionStatus.value = result;
-  if (_connectionStatus.value == ConnectivityResult.none) {
+  if (_connectionStatus.contains(ConnectivityResult.none) ) {
     DLoaders.warningSnackBar(title: DTexts.noInternetConnection);
   }
  }
@@ -33,7 +33,7 @@ class NetworkManager extends GetxController {
  Future<bool> isConnected() async {
   try {
     final result = await _connectivity.checkConnectivity();
-    return result != ConnectivityResult.none;
+    return !result.contains(ConnectivityResult.none);
   } on PlatformException catch (_) {
     return false;
   }

@@ -13,3 +13,10 @@ enum PaymentMethods {
   razorPay,
   paytm
 }
+
+enum StorageBucket {
+  avatars('avatars');
+
+  const StorageBucket(this.value);
+  final String value;
+}

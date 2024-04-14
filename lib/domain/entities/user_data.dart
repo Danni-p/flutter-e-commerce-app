@@ -48,4 +48,6 @@ class UserData {
       profilePicture: '');
 
   String get fullName => '$firstName $lastName';
+
+  bool get hasProfilePicture => profilePicture.isNotEmpty;
 }

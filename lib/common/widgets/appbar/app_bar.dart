@@ -30,7 +30,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
           automaticallyImplyLeading: false,
           leading: showBackArrow
               ? IconButton(
-                  onPressed: () => Get.back(),
+                  onPressed: () => leadingOnPressed!= null ? leadingOnPressed!() : Get.back(),
                   icon: Icon(Iconsax.arrow_left, color: isDark ? DColors.white : DColors.black))
               : leadingIcon != null
                   ? IconButton(

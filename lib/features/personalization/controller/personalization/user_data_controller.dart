@@ -4,7 +4,11 @@ import 'package:flutter_e_commerce_app/domain/entities/user_data.dart';
 import 'package:flutter_e_commerce_app/domain/repositories/auth_repository.dart';
 import 'package:flutter_e_commerce_app/domain/repositories/user_repository.dart';
 import 'package:flutter_e_commerce_app/infrastructure/models/user_data_model.dart';
+import 'package:flutter_e_commerce_app/utils/constants/enums.dart';
+import 'package:flutter_e_commerce_app/utils/constants/images.dart';
+import 'package:flutter_e_commerce_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UserDataController extends GetxController {
@@ -19,6 +23,7 @@ class UserDataController extends GetxController {
   /// -- Variables
   Rx<UserData> userData = UserData.empty().obs;
   final userDataLoading = false.obs;
+  final imageUploading = false.obs;
   late StreamSubscription<AuthState> _authStreamSubscription;
 
   @override
@@ -73,5 +78,47 @@ class UserDataController extends GetxController {
             id: authRepository.currentUser?.id ?? '',
             firstName: firstName,
             lastName: lastName));
+  }
+
+  String getImageUrlOrDefault() {
+    final networkImage = userData.value.profilePicture;
+    return networkImage.isNotEmpty ? networkImage : DImages.user;
+  }
+
+  Future<void> uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+
+      if (image != null) {
+        imageUploading.value = true;
+        // Upload Iamge
+        final imageUrl = await userRepository.uploadImage(
+            bucket: StorageBucket.avatars,
+            path: authRepository.currentUser?.id ?? '',
+            imageFile: image);
+        // Update User Image record
+        await userRepository.updateUser(
+            userDataModel: UserDataModel(
+                id: authRepository.currentUser?.id ?? '',
+                profilePicture: imageUrl));
+
+        // update userData
+        userData.value = userData.value.copyWith(profilePicture: imageUrl);
+
+        DLoaders.successSnackBar(
+            title: 'Congratulations',
+            message: 'Your Profile Image has been updated!');
+      }
+    } catch (e) {
+      print(e);
+      DLoaders.errorSnackBar(
+          title: 'Oh Snap', message: 'Something went wrong: $e');
+    } finally {
+      imageUploading.value = false;
+    }
   }
 }

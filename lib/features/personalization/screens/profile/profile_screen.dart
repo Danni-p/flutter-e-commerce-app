@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:flutter_e_commerce_app/common/widgets/images/rounded_image.dart';
+import 'package:flutter_e_commerce_app/common/widgets/loaders/shimmer_effect.dart';
 import 'package:flutter_e_commerce_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_e_commerce_app/features/personalization/controller/personalization/user_data_controller.dart';
 import 'package:flutter_e_commerce_app/features/personalization/controller/profile/profile_controller.dart';
 import 'package:flutter_e_commerce_app/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
-import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
 import 'package:get/get.dart';
@@ -21,9 +21,10 @@ class ProfileScreen extends StatelessWidget {
     final userDataController = UserDataController.instance;
     final profileController = ProfileController.instance;
     return Scaffold(
-      appBar: const DAppBar(
+      appBar: DAppBar(
         showBackArrow: true,
-        title: Text(DTexts.profile),
+        leadingOnPressed: () => Get.offNamed(Routes.navigationMenu),
+        title: const Text(DTexts.profile),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -34,10 +35,18 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const DRoundedImage(
-                        imageUrl: DImages.user, width: 80, height: 80),
+                    Obx(() => userDataController.imageUploading.value
+                        ? const DShimmerEffect(width: 80, height: 80)
+                        : DRoundedImage(
+                            imageUrl: userDataController.getImageUrlOrDefault(),
+                            width: 80,
+                            height: 80,
+                            isNetworkImage: userDataController
+                                .userData.value.hasProfilePicture,
+                          )),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () =>
+                            userDataController.uploadUserProfilePicture(),
                         child: const Text(DTexts.changeProfilePicture))
                   ],
                 ),

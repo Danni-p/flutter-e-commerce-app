@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce_app/common/widgets/images/asset_or_network_image.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 
 class DRoundedImage extends StatelessWidget {
   const DRoundedImage(
       {super.key,
-      this.width,
-      this.height,
+      this.width = 55,
+      this.height = 55,
       required this.imageUrl,
       this.applyImageRadius = true,
       this.border,
@@ -17,7 +18,7 @@ class DRoundedImage extends StatelessWidget {
       this.onPressed,
       this.borderRadius = DSizes.md});
 
-  final double? width, height;
+  final double width, height;
   final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
@@ -45,12 +46,13 @@ class DRoundedImage extends StatelessWidget {
             borderRadius: applyImageRadius
                 ? BorderRadius.circular(borderRadius)
                 : BorderRadius.zero,
-            child: Image(
-                image: isNetworkImage
-                    ? NetworkImage(imageUrl)
-                    : AssetImage(imageUrl) as ImageProvider,
-                color: overlayColor,
-                fit: fit)),
+            child: DAssetOrNetworkImage(
+                imageUrl: imageUrl,
+                overlayColor: overlayColor,
+                fit: fit,
+                width: width,
+                height: height,
+                isNetworkImage: isNetworkImage)),
       ),
     );
   }
