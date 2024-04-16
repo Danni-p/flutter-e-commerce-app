@@ -1,9 +1,11 @@
 import 'package:flutter_e_commerce_app/domain/repositories/auth_repository.dart';
+import 'package:flutter_e_commerce_app/domain/repositories/banner_repository.dart';
 import 'package:flutter_e_commerce_app/domain/repositories/category_repository.dart';
 import 'package:flutter_e_commerce_app/domain/repositories/user_repository.dart';
 import 'package:flutter_e_commerce_app/features/personalization/controller/personalization/user_data_controller.dart';
 import 'package:flutter_e_commerce_app/infrastructure/datasources/local_device_storage.dart';
 import 'package:flutter_e_commerce_app/infrastructure/repositories/auth_repository_impl.dart';
+import 'package:flutter_e_commerce_app/infrastructure/repositories/banner_repository_impl.dart';
 import 'package:flutter_e_commerce_app/infrastructure/repositories/category_repository_impl.dart';
 import 'package:flutter_e_commerce_app/infrastructure/repositories/user_repository_impl.dart';
 import 'package:flutter_e_commerce_app/utils/helpers/network_manager.dart';
@@ -25,6 +27,7 @@ class InitialBindings extends Bindings {
   Get.put<AuthRepository>(AuthRepositoryImpl(localDeviceStorage: Get.find(), supabaseClient: Get.find()), permanent: true);
   Get.lazyPut<UserRepository>(() => UserRepositoryImpl(supabaseClient: Get.find()), fenix: true);
   Get.lazyPut<CategoryRepository>(() => CategoryRepositoryImpl(supabaseClient: Get.find()), fenix: true);
+  Get.lazyPut<BannerRepository>(() => BannerRepositoryImpl(supabaseClient: Get.find()), fenix: true);
 
   //! Global Controllers
   // Controllers that not just exist for a single screen but for the lifecycle of the whole app

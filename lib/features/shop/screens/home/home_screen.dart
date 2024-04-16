@@ -10,7 +10,6 @@ import 'package:flutter_e_commerce_app/features/shop/screens/home/widgets/home_c
 import 'package:flutter_e_commerce_app/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
-import 'package:flutter_e_commerce_app/utils/constants/images.dart';
 import 'package:flutter_e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/texts.dart';
 import 'package:get/get.dart';
@@ -61,11 +60,7 @@ class HomeScreen extends GetView<HomeController> {
               padding: const EdgeInsets.all(DSizes.defaultSpace),
               child: Column(
                 children: [
-                  const DPromoSlider(imageUrls: [
-                    DImages.banner1,
-                    DImages.banner2,
-                    DImages.banner3
-                  ]),
+                  const DPromoSlider(),
                   const SizedBox(height: DSizes.spaceBtwSections),
 
                   /// -- Heading
