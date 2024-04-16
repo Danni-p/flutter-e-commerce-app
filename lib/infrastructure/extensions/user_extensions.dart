@@ -8,7 +8,7 @@ extension UserExtensions on User {
   }
 }
 
-extension SupabaseHelpers on SupabaseClient {
+extension SupabaseUserDataHelpers on SupabaseClient {
   SupabaseQueryBuilder usersCollection() {
     return Supabase.instance.client.from("profiles");
   }

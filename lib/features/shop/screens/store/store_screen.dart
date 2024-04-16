@@ -6,6 +6,7 @@ import 'package:flutter_e_commerce_app/common/widgets/custom-shapes/containers/s
 import 'package:flutter_e_commerce_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_e_commerce_app/common/widgets/products/cart/cart_counter_icon.dart';
 import 'package:flutter_e_commerce_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_e_commerce_app/features/shop/controller/category_controller.dart';
 import 'package:flutter_e_commerce_app/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_e_commerce_app/router/routes.dart';
 import 'package:flutter_e_commerce_app/utils/constants/colors.dart';
@@ -19,10 +20,12 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final featuredCategories = CategoryController.instance.featuredCategories;
+
     final themeData = Theme.of(context);
     final isDark = DHelperFunctions.isDarkMode(context);
     return DefaultTabController(
-      length: 5,
+      length: featuredCategories.length,
       child: Scaffold(
         appBar: DAppBar(
           title: Text(DTexts.store, style: themeData.textTheme.headlineMedium),
@@ -79,32 +82,20 @@ class StoreScreen extends StatelessWidget {
                     ),
 
                     /// -- Tabs
-                    bottom: const DTabBar(tabs: [
-                      Tab(
-                        child: Text(DTexts.sports),
-                      ),
-                      Tab(
-                        child: Text(DTexts.furniture),
-                      ),
-                      Tab(
-                        child: Text(DTexts.electronics),
-                      ),
-                      Tab(
-                        child: Text(DTexts.clothes),
-                      ),
-                      Tab(
-                        child: Text(DTexts.cosmetics),
-                      )
-                    ]))
+                    bottom: DTabBar(
+                        tabs: featuredCategories
+                            .map((cat) => Tab(
+                                  child: Text(cat.name),
+                                ))
+                            .toList()))
               ];
             },
-            body: const TabBarView(children: [
-              DCategoryTab(),
-              DCategoryTab(),
-              DCategoryTab(),
-              DCategoryTab(),
-              DCategoryTab()
-            ])),
+            body: TabBarView(
+                children: featuredCategories
+                    .map((cat) => DCategoryTab(
+                          category: cat,
+                        ))
+                    .toList())),
       ),
     );
   }
