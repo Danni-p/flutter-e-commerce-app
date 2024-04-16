@@ -36,11 +36,9 @@ class BannerController extends GetxController {
 
       // fetch banners from data source
       final banners = await bannerRepository.getActiveBanners();
-      // update the bFanners list
+      // update the banners list
       activeBanners.assignAll(banners);
 
-      // filter featured categories
-      // featuredCategories.assignAll(allCategories.where((category) => category.isFeatured && category.parentId == null).take(8).toList());
     } catch (e) {
       print(e);
       DLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
