@@ -36,7 +36,7 @@ class BannerController extends GetxController {
 
       // fetch banners from data source
       final banners = await bannerRepository.getActiveBanners();
-      // update the banners list
+      // update the bFanners list
       activeBanners.assignAll(banners);
 
       // filter featured categories
